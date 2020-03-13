@@ -1,20 +1,20 @@
 class ProgParty_App {
 
   constructor() {
-      this.initialize();
   }
 
   initializeApi(api) { this._api = api; }
   initializeHomey(homey) { this._homey = homey; }
 
   renderHomey() {
-    homey.users.getUserMe().then(function(user) {
-      this._me = user;
-      me.properties = me.properties || {};
-      me.properties.favoriteDevices = me.properties.favoriteDevices || [];
+    var self = this;
+    self._homey.users.getUserMe().then(function(user) {
+      self._me = user;
+      self._me.properties = self._me.properties || {};
+      self._me.properties.favoriteDevices = self._me.properties.favoriteDevices || [];
             
-      homey.devices.getDevices().then(function(devices) {
-        var favoriteDevices = me.properties.favoriteDevices.map(function(deviceId){
+      self._homey.devices.getDevices().then(function(devices) {
+        var favoriteDevices = self._me.properties.favoriteDevices.map(function(deviceId){
           return devices[deviceId];
         }).filter(function(device){
           return !!device;
@@ -33,7 +33,7 @@ class ProgParty_App {
           });
         });
         
-        return renderDevices(favoriteDevices);
+        return self.renderDevices(favoriteDevices);
       }).catch(console.error);
     }).catch(console.error);
   }
