@@ -1,7 +1,20 @@
+
+window.addEventListener('load', function() {
+document.getElementById("configureButton").addEventListener("click", function(){
+
+  var token = getQueryVariable('token');
+  var theme = getQueryVariable('theme');
+
+  var qwe = "qwe"
+
+  // window.location.href = `html/configuration.html?theme=${theme}&token=${token}`;
+  window.location.href = `html/configuration.html?qwe=qwe`;
+});
+});
+
 class ProgParty_App {
 
   constructor() {
-      this.initialize();
   }
 
   initializeApi(api) { this._api = api; }
