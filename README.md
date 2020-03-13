@@ -31,9 +31,9 @@ To run this locally:
 
 ```
 npm i -g serve
-git clone https://github.com/athombv/homey.ink.git
+git clone https://github.com/Prog-Party/homey.ink.git
 cd homey.ink
-serve -p 5000 app
+serve -p 1337 app
 ```
 Then visit `http://localhost:5000/?token=<TOKEN>&theme=<THEME_ID>`.
 
