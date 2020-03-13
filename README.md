@@ -35,6 +35,6 @@ git clone https://github.com/Prog-Party/homey.floorplan.git
 cd homey.floorplan
 serve -p 1337 app
 ```
-Then visit `http://localhost:5000/?token=<TOKEN>&theme=<THEME_ID>`.
+Then visit `http://localhost:1337/?token=<TOKEN>&theme=<THEME_ID>`.
 
 > Your token can be acquired by visiting https://homey.ink and looking in the console after logging in.
