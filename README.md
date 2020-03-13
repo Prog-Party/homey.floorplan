@@ -1,4 +1,4 @@
-# Homey.ink
+# Homey.floorplan
 
 Homey.ink is an open-source project for wall-mounted Homey dashboards.
 
@@ -31,8 +31,8 @@ To run this locally:
 
 ```
 npm i -g serve
-git clone https://github.com/Prog-Party/homey.ink.git
-cd homey.ink
+git clone https://github.com/Prog-Party/homey.floorplan.git
+cd homey.floorplan
 serve -p 1337 app
 ```
 Then visit `http://localhost:5000/?token=<TOKEN>&theme=<THEME_ID>`.
