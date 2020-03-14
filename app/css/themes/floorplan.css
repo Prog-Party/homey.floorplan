@@ -4,6 +4,10 @@
  * Theme by: ProgParty
  */
 
+ #container {
+   display:none;
+ }
+
 #floorplan_View {
   height: 100%; 
   width: 100%;
