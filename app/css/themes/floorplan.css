@@ -8,6 +8,10 @@
    display:none;
  }
 
+ /********************/
+ /** FLOORPLAN ***/
+ /********************/
+
 #floorplan_View {
   height: 100%; 
   width: 100%;
@@ -20,8 +24,19 @@
   width: 50%;
 }
 
+#floorplan_Canvas {
+  background-repeat: no-repeat;
+  background-color: crimson;
+  height: 100%;
+  max-width: 100%;
+  background-size: contain;
+}
+ /********************/
+ /** CONFIG ***/
+ /********************/
 
-#config_FloorLayout {
+
+#config_Layout {
   height: 100%;
   margin: auto;
   width: 50%;
@@ -33,11 +48,28 @@
   background-color: lightblue;
 }
 
+#config_Canvas {
+  background-repeat: no-repeat;
+  background-color: crimson;
+  height: 100%;
+  max-width: 100%;
+  background-size: contain;
+}
+
+ /********************/
+ /** CONFIGFLOOR ***/
+ /********************/
+
 #configfloor_View {
   height: 100%; 
   width: 100%;
   background-color: lightseagreen;
 }
+
+
+ /********************/
+ /** CONFIGDEVICE ***/
+ /********************/
 
 #configdevice_View {
   height: 100%; 
@@ -45,38 +77,26 @@
   background-color: lightcoral;
 }
 
-#floorplan_Canvas {
-  background-repeat: no-repeat;
-  background-color: crimson;
-  height: 100%;
-  max-width: 100%;
-  background-size: contain;
-}
+ /********************/
+ /** DE REST ***/
+ /********************/
 
-#config_FloorCanvas {
-  background-repeat: no-repeat;
-  background-color: crimson;
-  height: 100%;
-  max-width: 100%;
-  background-size: contain;
-}
-
-.view-switcher-menu {
+#ViewSwitcherMenu {
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.view-switcher-menu a {
-  color: green;
-}
+  #ViewSwitcherMenu a {
+    color: green;
+  }
 
-.view-switcher-menu ul,
-.view-switcher-menu li {
-  list-style: none;
-}
+  #ViewSwitcherMenu ul,
+  #ViewSwitcherMenu li {
+    list-style: none;
+  }
 
-.floor-switcher-menu {
+#FloorSwitcherMenu {
   position: absolute;
   top: 0;
   right: 0;
