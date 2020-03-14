@@ -25,7 +25,7 @@ class Floorplan_Devices {
     }
 
     initializeEvents() {
-        $("#configdevice_Button").click(function() {
+        $("#config_DeviceButton").click(function() {
             console.log("deviceConfigButton click");
         });
     }

@@ -11,6 +11,7 @@
 #floorplan_View {
   height: 100%; 
   width: 100%;
+  background-color: lightgreen;
 }
 
 #floorplan_Layout {
@@ -20,12 +21,29 @@
 }
 
 
-#configfloor_Layout {
+#config_FloorLayout {
   height: 100%;
   margin: auto;
   width: 50%;
 }
 
+#config_View {
+  height: 100%; 
+  width: 100%;
+  background-color: lightblue;
+}
+
+#configfloor_View {
+  height: 100%; 
+  width: 100%;
+  background-color: lightseagreen;
+}
+
+#configdevice_View {
+  height: 100%; 
+  width: 100%;
+  background-color: lightcoral;
+}
 
 #floorplan_Canvas {
   background-repeat: no-repeat;
@@ -35,7 +53,7 @@
   background-size: contain;
 }
 
-#configfloor_Canvas {
+#config_FloorCanvas {
   background-repeat: no-repeat;
   background-color: crimson;
   height: 100%;
@@ -49,7 +67,7 @@
   left: 0;
 }
 
-.view-switcher-button {
+.view-switcher-menu > a {
   color: green;
 }
 
