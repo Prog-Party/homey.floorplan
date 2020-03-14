@@ -6,12 +6,11 @@ class Floorplan_Floors {
 
     constructor() {
         this.onActivateFloorEvent = new Event('onActivateFloor');
+        this.onFloorsRetrievedEvent = new Event('onFloorsRetrieved');
+        this.initializeEvents();
     }
 
     initialize () {
-        this.floorSwitcherMenu = $("#FloorSwitcherMenu");
-
-        this.initializeEvents();
         this.retrieveAllFloors();
     }
 
@@ -20,23 +19,11 @@ class Floorplan_Floors {
         url += "&token=" + getToken();
 
         $.get(url, function(json) {
-            _floors.allFloors = JSON.parse(json);
-            _floors.allFloors = _floors.allFloors.sort((a,b) => a.order - b.order);
-            _floors.initializeButtons();
+            _floors._allFloors = JSON.parse(json);
+            _floors._allFloors = _floors.allFloors.sort((a,b) => a.order - b.order);
+            
+            document.dispatchEvent(_floors.onFloorsRetrievedEvent);
         });
-    }
-
-    initializeButtons() {
-        _floors.floorSwitcherMenu.html("");
-
-        this.allFloors.forEach(floor => {
-            var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a><br />`;
-            _floors.floorSwitcherMenu.append(button);
-        });
-        
-        if(this.allFloors.length > 0) {
-            this.activateFloor(this.allFloors[0].id);
-        }
     }
 
     initializeEvents() {
@@ -95,6 +82,10 @@ class Floorplan_Floors {
 
     get activeFloor() {
         return this._activeFloor;
+    }
+
+    get allFloors() {
+        return this._allFloors;
     }
 }
 
