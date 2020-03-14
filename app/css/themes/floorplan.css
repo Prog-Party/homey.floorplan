@@ -66,6 +66,10 @@
   background-color: lightseagreen;
 }
 
+#configfloor_Layout {
+  width: 50%;
+  margin: auto;
+}
 
  /********************/
  /** CONFIGDEVICE ***/
