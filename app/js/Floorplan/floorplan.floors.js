@@ -17,7 +17,8 @@ class Floorplan_Floors {
 
     createButtons() {
         this.allFloors.forEach(floor => {
-            $("#floorLayoutMenu").append(`<a id='floorButton${floor.id}' href='#'>${floor.name}</a>`);
+            $("#floorLayoutMenu").append(`<a id='floorButton${floor.id}' href='#'>${floor.name}</a><br />`);
+            $("#floorEditLayoutMenu").append(`<a id='floorButton${floor.id}' href='#'>${floor.name}</a><br />`);
         });
     }
 
@@ -26,6 +27,10 @@ class Floorplan_Floors {
             $(`#floorButton${floor.id}`).click(function() {
                 $("#floorCanvas").css("background-image", `url(${floor.Image})`)
             });
+        });
+
+        $("#floorConfigButton").click(function() {
+            console.log("floorConfigButton click");
         });
     }
 
