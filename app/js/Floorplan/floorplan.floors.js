@@ -1,5 +1,5 @@
 
-class Floorplanner_Floors {
+class Floorplan_Floors {
 
     initialize () { 
         this.allFloors = [
@@ -12,5 +12,5 @@ class Floorplanner_Floors {
     }
 }
 
-var _floors = new Floorplanner_Floors();
+var _floors = new Floorplan_Floors();
 _floors.initialize();

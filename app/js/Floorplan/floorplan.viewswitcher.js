@@ -2,7 +2,7 @@ window.addEventListener('load', function() {
     _viewswitcher.initialize();
 });
 
-class Floorplanner_Viewswitcher {
+class Floorplan_Viewswitcher {
 
     initialize() {
         
@@ -40,4 +40,4 @@ class Floorplanner_Viewswitcher {
     }
 }
 
-var _viewswitcher = new Floorplanner_Viewswitcher();
+var _viewswitcher = new Floorplan_Viewswitcher();
