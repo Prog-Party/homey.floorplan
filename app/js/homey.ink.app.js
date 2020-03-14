@@ -27,11 +27,7 @@ window.addEventListener('load', function() {
     clientId: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
   });
-<<<<<<< HEAD
   
-=======
-    
->>>>>>> 4246ce720507165230ebaf8afcd3ea5f73383f43
   var theme = getQueryVariable('theme');
   var $css = document.createElement('link');
   $css.rel = 'stylesheet';
@@ -54,11 +50,8 @@ window.addEventListener('load', function() {
   }).then(function(homey) {
     return homey.authenticate();
   }).then(function(homey_) {
-    homey = homey_;
-<<<<<<< HEAD
+    homey = homey_;    
     _homey = homey;
-=======
->>>>>>> 4246ce720507165230ebaf8afcd3ea5f73383f43
 
     renderHomey();    
     later.setInterval(function(){
@@ -67,10 +60,6 @@ window.addEventListener('load', function() {
   }).catch(console.error);
   
   function renderHomey() {
-<<<<<<< HEAD
-=======
-    
->>>>>>> 4246ce720507165230ebaf8afcd3ea5f73383f43
     homey.users.getUserMe().then(function(user) {
       me = user;
       me.properties = me.properties || {};
