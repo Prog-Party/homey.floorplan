@@ -64,8 +64,9 @@
     </div>
 
     <div id="floorplanView">
-      <a id="configureButton" class="view-switcher-button"  href="#">Configuration</a>
-      
+      <div class="view-switcher-menu">
+        <a id="configureButton" class="view-switcher-button"  href="#">Configuration</a>
+      </div>
       <div id="floorLayout">
         <div id="floorLayoutMenu" class="floor-switcher-menu" >
         </div>
@@ -76,8 +77,16 @@
     </div>
 
     <div id="configurationView" style="height: 100%; width: 100%;">
-      <a id="viewerButton" class="view-switcher-button" href="#">Viewer</a>
+      <div class="view-switcher-menu">
+        <a id="viewerButton" class="view-switcher-button" href="#">Viewer</a>
+        <br />
+        <a id="floorconfigButton" class="view-switcher-button" href="#">Floor config</a>
+        <br />
+        <a id="deviceconfigButton" class="view-switcher-button" href="#">Device config</a>
+      </div>
       <div id="floorEditLayout">
+        <div id="floorEditLayoutMenu" class="floor-switcher-menu" >
+        </div>
         <div id="floorEditCanvas">
           floor 1 edit
         </div>

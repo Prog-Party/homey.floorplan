@@ -1,12 +1,14 @@
-var _homey;
+window.addEventListener('load', function() {
+    _devices.initialize();
+});
+
+ var _homey;
 
 class Floorplan_Devices {
 
-    constructor() {
-    }
-
     initialize () {
         this.initializeDevices();
+        this.initializeEvents();
      }
 
     initializeDevices() {
@@ -19,6 +21,12 @@ class Floorplan_Devices {
         
         _homey.devices.getDevices().then(function(devices) {
             _devices.allDevices = devices;
+        });
+    }
+
+    initializeEvents() {
+        $("#deviceConfigButton").click(function() {
+            console.log("deviceConfigButton click");
         });
     }
 

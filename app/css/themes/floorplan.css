@@ -186,10 +186,22 @@
   background-size: contain;
 }
 
-.view-switcher-button {
+#floorEditCanvas {
+  background-repeat: no-repeat;
+  background-color: crimson;
+  height: 100%;
+  max-width: 100%;
+  background-size: contain;
+}
+
+.view-switcher-menu {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.view-switcher-button {
+  color: green;
 }
 
 .floor-switcher-menu {
