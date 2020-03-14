@@ -27,5 +27,5 @@ class Floorplan_Devices {
     }
 }
 
-var _devices = new Floorplanner_Devices();
+var _devices = new Floorplan_Devices();
 _devices.initialize();

@@ -50,7 +50,7 @@ window.addEventListener('load', function() {
   }).then(function(homey) {
     return homey.authenticate();
   }).then(function(homey_) {
-    homey = homey_;    
+    homey = homey_;
     _homey = homey;
 
     renderHomey();    

@@ -23,9 +23,9 @@
     <script type="text/javascript" src="./js/homey.ink.app.js"></script>
 
     
-    <script type="text/javascript" src="./js/Floorplanner/floorplanner.devices.js"></script>
-    <script type="text/javascript" src="./js/Floorplanner/floorplanner.floors.js"></script>
-    <script type="text/javascript" src="./js/Floorplanner/floorplanner.viewswitcher.js"></script>
+    <script type="text/javascript" src="./js/Floorplan/floorplan.devices.js"></script>
+    <script type="text/javascript" src="./js/Floorplan/floorplan.floors.js"></script>
+    <script type="text/javascript" src="./js/Floorplan/floorplan.viewswitcher.js"></script>
   </head>
   <body>
         
@@ -57,14 +57,30 @@
             <h2><span>Favorite Devices</span></h2>
             <div id="devices-inner" class="devices favorites-inner"></div>
           </div>
-
-          <a id="configureButton" href="#" >Configuration</a>
         </div>
       
       </div>
     </div>
-    <div id="configurationId">
-      configuration
+
+    <div id="floorplanView">
+      <a id="configureButton" class="view-switcher-button"  href="#">Configuration</a>
+      
+      <div id="floorLayout">
+        <div id="floorLayoutMenu" class="floor-switcher-menu" >
+        </div>
+        <div id="floorCanvas">
+          floor1
+        </div>
+      </div>
+    </div>
+
+    <div id="configurationView" style="height: 100%; width: 100%;">
+      <a id="viewerButton" class="view-switcher-button" href="#">Viewer</a>
+      <div id="floorEditLayout">
+        <div id="floorEditCanvas">
+          floor 1 edit
+        </div>
+      </div>
     </div>
     
   </body>

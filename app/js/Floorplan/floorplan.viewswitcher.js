@@ -7,16 +7,17 @@ class Floorplan_Viewswitcher {
     initialize() {
         
         this.views = [
-            { viewId: "container", buttonId: "" }, 
-            { viewId: "configurationId", buttonId: "" }
+            { viewId: "configurationView", buttonId: "configureButton" }, 
+            { viewId: "container", buttonId: "viewerButton" }
         ];
         this.initializeEvents();
     }
 
-    initializeEvents() {
-        
-        document.getElementById("configureButton").addEventListener("click", function(){
-            _viewswitcher.switchToView("configurationId");
+    initializeEvents() {       
+        this.views.forEach(view => {
+            $("#" + view.buttonId).click(function(){
+                _viewswitcher.switchToView(view.viewId);
+            });
         });
     }
 
