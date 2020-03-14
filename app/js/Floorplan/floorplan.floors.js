@@ -5,36 +5,49 @@ window.addEventListener('load', function() {
 class Floorplan_Floors {
 
     initialize () { 
-        this.allFloors = [
-            { id:100, order: 1, name: 'Beneden', Image: 'http://beneden.jpg' },
-            { id:200, order: 2, name: 'Boven', Image: 'http://boven.jpg' },
-            { id:300, order: 3, name: 'Zolder', Image: 'http://zolder.jpg' }
-        ];
-
-        this.createButtons();
+        this.floorLayoutMenu = $("#floorLayoutMenu");
+        this.floorCanvas = $("#floorCanvas");
         this.initializeEvents();
+
+        //retrieve the floors from database
+        var token = getToken();
+        var functionUrl = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllFloors?code=sl30LU/RJhGWyaUj1zQKrXARPTGEyW/aZCuFRP6mR41GL7G7x0ihlA==";
+        var url = functionUrl + "&token=" + token;
+
+        console.log(url);
+        $.get(url, function(json) {
+            //retrieving floors from database worked
+            _floors.allFloors = JSON.parse(json);
+            _floors.allFloors = _floors.allFloors.sort(function(a,b){return a.order - b.order});
+            _floors.initializeButtons();
+        });
     }
 
-    createButtons() {
+    initializeButtons() {
         this.allFloors.forEach(floor => {
-            $("#floorLayoutMenu").append(`<a id='floorButton${floor.id}' href='#'>${floor.name}</a>`);
+            _floors.floorLayoutMenu.append(`<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`);
         });
+        
+        if(this.allFloors.length > 0) {
+            this.activateFloor(this.allFloors[0].id);
+        }
     }
 
     initializeEvents() {
-        this.allFloors.forEach(floor => {
-            $(`#floorButton${floor.id}`).click(function() {
-                $("#floorCanvas").css("background-image", `url(${floor.Image})`)
-            });
+        $(document).on("click", ".floor-button", function() {
+            var floorId = $(this).attr("data-floor-id");
+            _floors.activateFloor(floorId);
         });
     }
 
-    get floors() {
-        return this.allFloors;
+    activateFloor(floorId) {
+        var floor = _floors.allFloors.filter(f => f.id == floorId)[0];
+        this._activeFloor = floor;
+        this.floorCanvas.css("background-image", `url(${floor.img})`);
     }
 
     get activeFloor() {
-        return this.floor;
+        return this._activeFloor;
     }
 }
 
