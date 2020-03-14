@@ -16,8 +16,8 @@ class Floorplan_Floors {
     retrieveAllFloors() {
         //retrieve the floors from database
         var token = getToken();
-        var functionUrl = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllFloors?code=sl30LU/RJhGWyaUj1zQKrXARPTGEyW/aZCuFRP6mR41GL7G7x0ihlA==";
-        var url = functionUrl + "&token=" + token;
+        var url = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllFloors?code=sl30LU/RJhGWyaUj1zQKrXARPTGEyW/aZCuFRP6mR41GL7G7x0ihlA==";
+        url += "&token=" + token;
 
         console.log(url);
         $.get(url, function(json) {
@@ -62,8 +62,8 @@ class Floorplan_Floors {
 
     addFloor(name, order, image) {
         var token = getToken();
-        var functionUrl = "https://progparty-homey-floorplan.azurewebsites.net/api/AddFloor?code=DZOZHKHYawTcGf/o19ZVi5CAmeciz747E2lWLHmEqQa3PHf1RJHQiQ=="
-        var url = functionUrl + "&token=" + token;
+        var url = "https://progparty-homey-floorplan.azurewebsites.net/api/AddFloor?code=DZOZHKHYawTcGf/o19ZVi5CAmeciz747E2lWLHmEqQa3PHf1RJHQiQ==";
+        url += "&token=" + token;
         url += "&order=" + order;
         url += "&image=" + image;
         url += "&name=" + name;
@@ -71,6 +71,22 @@ class Floorplan_Floors {
         console.log(url);
         $.get(url, function(json) {
             console.log(`Adding floor worked (${json})`);
+            _floors.retrieveAllFloors();
+        });
+    }
+
+    updateFloor(floorId, name, order, image) {
+        var token = getToken();
+        var url = "https://progparty-homey-floorplan.azurewebsites.net/api/UpdateFloor?code=O6ac1A8x8B1i5H55wszVK5WQhsOjXy8k8nsWIn/MpTk9jQyoMgZp/Q==";
+        url += "&token=" + token;
+        url += "&floorId=" + floorId;
+        url += "&order=" + order;
+        url += "&image=" + image;
+        url += "&name=" + name;
+
+        console.log(url);
+        $.get(url, function(json) {
+            console.log(`Removing floor worked (${json})`);
             _floors.retrieveAllFloors();
         });
     }
