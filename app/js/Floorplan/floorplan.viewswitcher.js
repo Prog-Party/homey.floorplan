@@ -8,9 +8,11 @@ class Floorplan_Viewswitcher {
         
         this.views = [
             { viewId: "configurationView", buttonId: "configureButton" }, 
-            { viewId: "container", buttonId: "viewerButton" }
+            { viewId: "floorplanView", buttonId: "viewerButton" }
         ];
         this.initializeEvents();
+
+        this.switchToView("floorplanView");
     }
 
     initializeEvents() {       
