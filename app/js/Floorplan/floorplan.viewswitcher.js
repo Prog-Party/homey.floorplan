@@ -11,6 +11,8 @@ class Floorplan_Viewswitcher {
             { viewId: "floorplanView", buttonId: "viewerButton" }
         ];
         this.initializeEvents();
+
+        this.switchToView("floorplanView");
     }
 
     initializeEvents() {       
