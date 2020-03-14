@@ -33,6 +33,17 @@ input {
   max-width: 100%;
   background-size: contain;
 }
+
+#floorplan_FloorSwitcherMenu {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+#floorplan_FloorSwitcherMenu > a {
+  display: block;
+}
+
  /********************/
  /** CONFIG ***/
  /********************/
@@ -104,9 +115,3 @@ input {
   #ViewSwitcherMenu li {
     list-style: none;
   }
-
-#FloorSwitcherMenu {
-  position: absolute;
-  top: 0;
-  right: 0;
-}
