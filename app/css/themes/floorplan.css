@@ -67,8 +67,13 @@
   left: 0;
 }
 
-.view-switcher-menu > a {
+.view-switcher-menu a {
   color: green;
+}
+
+.view-switcher-menu ul,
+.view-switcher-menu li {
+  list-style: none;
 }
 
 .floor-switcher-menu {
