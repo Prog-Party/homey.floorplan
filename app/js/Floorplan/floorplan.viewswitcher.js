@@ -7,8 +7,8 @@ class Floorplan_Viewswitcher {
     initialize() {
         
         this.views = [
-            { viewId: "container", buttonId: "" }, 
-            { viewId: "configurationId", buttonId: "" }
+            { viewId: "container", buttonId: "configureButton" }, 
+            { viewId: "configurationId", buttonId: "viewerButton" }
         ];
         this.initializeEvents();
     }
@@ -17,6 +17,10 @@ class Floorplan_Viewswitcher {
         
         document.getElementById("configureButton").addEventListener("click", function(){
             _viewswitcher.switchToView("configurationId");
+        });
+
+        document.getElementById("viewerButton").addEventListener("click", function(){
+            _viewswitcher.switchToView("container");
         });
     }
 
