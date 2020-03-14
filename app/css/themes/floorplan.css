@@ -4,26 +4,26 @@
  * Theme by: ProgParty
  */
 
-#floorplanView {
+#floorplan_View {
   height: 100%; 
   width: 100%;
 }
 
-#floorLayout {
+#floorplan_Layout {
   height: 100%;
   margin: auto;
   width: 50%;
 }
 
 
-#floorEditLayout {
+#configfloor_Layout {
   height: 100%;
   margin: auto;
   width: 50%;
 }
 
 
-#floorCanvas {
+#floorplan_Canvas {
   background-repeat: no-repeat;
   background-color: crimson;
   height: 100%;
@@ -31,7 +31,7 @@
   background-size: contain;
 }
 
-#floorEditCanvas {
+#configfloor_Canvas {
   background-repeat: no-repeat;
   background-color: crimson;
   height: 100%;
