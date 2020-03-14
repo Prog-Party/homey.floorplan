@@ -4,7 +4,6 @@ var CLIENT_SECRET = 'gvhs0gebgir8vz8yo2l0jfb49u9xzzhrkuo1uvs8';
 window.addEventListener('load', function() {
   
   var homey;
-  var progpartyApp = new ProgParty_App();
   var me;
   
   var $textLarge = document.getElementById('text-large');
@@ -28,8 +27,7 @@ window.addEventListener('load', function() {
     clientId: CLIENT_ID,
     clientSecret: CLIENT_SECRET,
   });
-  progpartyApp.initializeApi(api);
-  
+    
   var theme = getQueryVariable('theme');
   var $css = document.createElement('link');
   $css.rel = 'stylesheet';
@@ -53,7 +51,6 @@ window.addEventListener('load', function() {
     return homey.authenticate();
   }).then(function(homey_) {
     homey = homey_;
-    progpartyApp.initializeHomey(homey);
 
     renderHomey();    
     later.setInterval(function(){
@@ -62,7 +59,6 @@ window.addEventListener('load', function() {
   }).catch(console.error);
   
   function renderHomey() {
-    progpartyApp.renderHomey();
     
     homey.users.getUserMe().then(function(user) {
       me = user;
