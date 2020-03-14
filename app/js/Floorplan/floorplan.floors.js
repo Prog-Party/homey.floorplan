@@ -4,22 +4,22 @@ window.addEventListener('load', function() {
 
 class Floorplan_Floors {
 
-    initialize () { 
+    constructor() {
+        this.onActivateFloorEvent = new Event('onActivateFloor');
+    }
+
+    initialize () {
         this.floorSwitcherMenu = $("#FloorSwitcherMenu");
-        this.floorCanvas = $("#floorplan_Canvas");
 
         this.initializeEvents();
         this.retrieveAllFloors();
     }
 
     retrieveAllFloors() {
-        //retrieve the floors from database
         var url = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllFloors?code=sl30LU/RJhGWyaUj1zQKrXARPTGEyW/aZCuFRP6mR41GL7G7x0ihlA==";
         url += "&token=" + getToken();
 
-        console.log(url);
         $.get(url, function(json) {
-            //retrieving floors from database worked
             _floors.allFloors = JSON.parse(json);
             _floors.allFloors = _floors.allFloors.sort((a,b) => a.order - b.order);
             _floors.initializeButtons();
@@ -49,7 +49,7 @@ class Floorplan_Floors {
     activateFloor(floorId) {
         var floor = _floors.allFloors.filter(f => f.id == floorId)[0];
         this._activeFloor = floor;
-        this.floorCanvas.css("background-image", `url(${floor.img})`);
+        document.dispatchEvent(this.onActivateFloorEvent);
     }
 
     addFloor(name, order, image) {
