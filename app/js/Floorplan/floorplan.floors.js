@@ -5,9 +5,8 @@ window.addEventListener('load', function() {
 class Floorplan_Floors {
 
     initialize () { 
-        this.floorLayoutMenu = $("#floorplan_LayoutMenu");
+        this.floorSwitcherMenu = $("#FloorSwitcherMenu");
         this.floorCanvas = $("#floorplan_Canvas");
-        this.floorEditLayoutMenu = $("#config_FloorLayoutMenu");
 
         this.initializeEvents();
         this.retrieveAllFloors();
@@ -28,13 +27,11 @@ class Floorplan_Floors {
     }
 
     initializeButtons() {
-        _floors.floorLayoutMenu.html("");
-        _floors.floorEditLayoutMenu.html("");
+        _floors.floorSwitcherMenu.html("");
 
         this.allFloors.forEach(floor => {
             var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a><br />`;
-            _floors.floorLayoutMenu.append(button);
-            _floors.floorEditLayoutMenu.append(button);
+            _floors.floorSwitcherMenu.append(button);
         });
         
         if(this.allFloors.length > 0) {
@@ -46,10 +43,6 @@ class Floorplan_Floors {
         $(document).on("click", ".floor-button", function() {
             var floorId = $(this).attr("data-floor-id");
             _floors.activateFloor(floorId);
-        });
-
-        $("#config_FloorButton").click(function() {
-            console.log("floorConfigButton click");
         });
     }
 

@@ -6,11 +6,11 @@ class Floorplan_Viewswitcher {
 
     initialize() {
         
-        this.views = [
-            { viewId: "config_View", buttonId: "floorplan_ConfigureButton" }, 
-            { viewId: "floorplan_View", buttonId: "config_ViewButton" },
-            { viewId: "configfloor_View", buttonId: "configdevice_ConfigureButton" },
-            { viewId: "configdevice_View", buttonId: "configfloor_ConfigureButton" }
+        this.views = [ 
+            { id: 1, viewId: "floorplan_View", buttonId: "floorplan_Button", buttonsToShow: [2] },
+            { id: 2, viewId: "config_View", buttonId: "config_Button", buttonsToShow: [1, 3, 4] },
+            { id: 3, viewId: "configfloor_View", buttonId: "configfloor_Button", buttonsToShow: [2] },
+            { id: 4, viewId: "configdevice_View", buttonId: "configdevice_Button", buttonsToShow: [2] }
         ];
         this.initializeEvents();
 
