@@ -4,6 +4,10 @@
  * Theme by: ProgParty
  */
 
+input {
+  border: 1px solid black;
+}
+
  #container {
    display:none;
  }
@@ -64,6 +68,13 @@
 #configfloor_Layout {
   width: 50%;
   margin: auto;
+  display: flex;
+  flex-direction: row;
+}
+
+#configfloor_Form {
+  display: flex;
+  flex-direction: column;
 }
 
  /********************/
