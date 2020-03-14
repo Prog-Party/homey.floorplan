@@ -5,9 +5,9 @@ window.addEventListener('load', function() {
 class Floorplan_Floors {
 
     initialize () { 
-        this.floorLayoutMenu = $("#floorLayoutMenu");
-        this.floorCanvas = $("#floorCanvas");
-        this.floorEditLayoutMenu = $("#floorEditLayoutMenu");
+        this.floorLayoutMenu = $("#floorplan_LayoutMenu");
+        this.floorCanvas = $("#floorplan_Canvas");
+        this.floorEditLayoutMenu = $("#configfloor_LayoutMenu");
 
         this.initializeEvents();
 
@@ -43,7 +43,7 @@ class Floorplan_Floors {
             _floors.activateFloor(floorId);
         });
 
-        $("#floorConfigButton").click(function() {
+        $("#configfloor_Button").click(function() {
             console.log("floorConfigButton click");
         });
     }
