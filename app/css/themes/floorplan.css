@@ -15,7 +15,6 @@
 #floorplan_View {
   height: 100%; 
   width: 100%;
-  background-color: lightgreen;
 }
 
 #floorplan_Layout {
@@ -26,7 +25,6 @@
 
 #floorplan_Canvas {
   background-repeat: no-repeat;
-  background-color: crimson;
   height: 100%;
   max-width: 100%;
   background-size: contain;
@@ -45,12 +43,10 @@
 #config_View {
   height: 100%; 
   width: 100%;
-  background-color: lightblue;
 }
 
 #config_Canvas {
   background-repeat: no-repeat;
-  background-color: crimson;
   height: 100%;
   max-width: 100%;
   background-size: contain;
@@ -63,7 +59,6 @@
 #configfloor_View {
   height: 100%; 
   width: 100%;
-  background-color: lightseagreen;
 }
 
 
@@ -74,7 +69,6 @@
 #configdevice_View {
   height: 100%; 
   width: 100%;
-  background-color: lightcoral;
 }
 
  /********************/

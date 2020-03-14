@@ -28,8 +28,8 @@ class Floorplan_Viewswitcher {
     switchToView(viewId) {
         this.viewId = viewId;
         
-        _viewswitcher.hideAllViews();
-        _viewswitcher.showView(viewId);
+        this.hideAllViews();
+        this.showView(viewId);
     }
 
     get activeView() {
@@ -41,7 +41,17 @@ class Floorplan_Viewswitcher {
     }
 
     showView(viewId) {
+        var allViews = this.views;
+        var view = allViews.filter(v => v.viewId == viewId)[0];
+        
+        // Show the current view
         $("#" + viewId).show();
+
+        //hide all the buttons
+        allViews.forEach(v => $("#" + v.buttonId).hide());
+
+        //show the buttons that belong to the current view
+        view.buttonsToShow.forEach(id => $("#" + allViews.filter(v => v.id == id)[0].buttonId).show());        
     }
 }
 
