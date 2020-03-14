@@ -10,7 +10,7 @@ class Floorplan_Floors {
         this.floorEditLayoutMenu = $("#configfloor_LayoutMenu");
 
         this.initializeEvents();
-
+        this.retrieveAllFloors();
     }
 
     retrieveAllFloors() {
@@ -29,10 +29,10 @@ class Floorplan_Floors {
     }
 
     initializeButtons() {
-        this.allFloors.forEach(floor => {
-            _floors.floorLayoutMenu.html("");
-            _floors.floorEditLayoutMenu.html("");
+        _floors.floorLayoutMenu.html("");
+        _floors.floorEditLayoutMenu.html("");
 
+        this.allFloors.forEach(floor => {
             var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a><br />`;
             _floors.floorLayoutMenu.append(button);
             _floors.floorEditLayoutMenu.append(button);
