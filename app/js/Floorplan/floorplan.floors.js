@@ -7,7 +7,7 @@ class Floorplan_Floors {
     initialize () { 
         this.floorLayoutMenu = $("#floorplan_LayoutMenu");
         this.floorCanvas = $("#floorplan_Canvas");
-        this.floorEditLayoutMenu = $("#configfloor_LayoutMenu");
+        this.floorEditLayoutMenu = $("#config_FloorLayoutMenu");
 
         this.initializeEvents();
         this.retrieveAllFloors();
@@ -48,7 +48,7 @@ class Floorplan_Floors {
             _floors.activateFloor(floorId);
         });
 
-        $("#configfloor_Button").click(function() {
+        $("#config_FloorButton").click(function() {
             console.log("floorConfigButton click");
         });
     }
