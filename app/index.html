@@ -57,16 +57,29 @@
             <h2><span>Favorite Devices</span></h2>
             <div id="devices-inner" class="devices favorites-inner"></div>
           </div>
-
-          <a id="configureButton" href="#">Configuration</a>
         </div>
       
       </div>
     </div>
-    <div id="configurationView" style="height: 100%; width: 100%;">
-      <a id="viewerButton" href="#">Viewer</a>
-      <div id="floorLayout">
 
+    <div id="floorplanView">
+      <a id="configureButton" class="view-switcher-button"  href="#">Configuration</a>
+      
+      <div id="floorLayout">
+        <div id="floorLayoutMenu" class="floor-switcher-menu" >
+        </div>
+        <div id="floorCanvas">
+          floor1
+        </div>
+      </div>
+    </div>
+
+    <div id="configurationView" style="height: 100%; width: 100%;">
+      <a id="viewerButton" class="view-switcher-button" href="#">Viewer</a>
+      <div id="floorEditLayout">
+        <div id="floorEditCanvas">
+          floor 1 edit
+        </div>
       </div>
     </div>
     
