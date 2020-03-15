@@ -40,7 +40,7 @@ function floorplan_renderDevices() {
 
     if(_floors.allFloors.length == 0)
        return; 
-
+       
     console.log("Render the devices on the screen.");
 
     //get the height and width of the img
@@ -55,9 +55,8 @@ function floorplan_renderDevices() {
 
     _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
         var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
-        console.log("Add device " + homeyDevice.name + " to viewer");
-        var html = `<div style='left: ${floorplanDevice.x}%; top: ${floorplanDevice.y}%; width: 20px; height: 20px; background-color: red; position: absolute; '></div>`;
-
-        deviceHolder.append(html);
+        var data = {homeyDevice, floorplanDevice};
+        console.log(`Add device ${homeyDevice.name} to viewer`);
+        deviceHolder.append($("#floorplan_SingleDeviceTemplate").render(data));
     });
 }
