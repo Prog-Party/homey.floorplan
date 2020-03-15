@@ -9,6 +9,7 @@ document.addEventListener('onHomeyLoaded', function (obj) {
 class Floorplan_Devices {
     constructor() {
         this.onDevicesRetrievedEvent = new Event('onDevicesRetrieved');
+        this._devicesAreInitialized = false;
     }
 
     initialize () {
@@ -41,9 +42,11 @@ class Floorplan_Devices {
     }
 
     renderAfterRetrieve() {
-        console.log("Try rendering");
         if(this.allHomeyDevices && this.allFloorplanDevices)
+        {
+            this._devicesAreInitialized = true;
             document.dispatchEvent(this.onDevicesRetrievedEvent);
+        }
         else
             console.log("Rendering not possible yet");
     }
@@ -90,14 +93,19 @@ class Floorplan_Devices {
         });
     }
 
-    getFloorplanDeviceByHomeyDevice(homeyDevice) {
+    getFloorplanDevice(homeyDevice) {
         var device = this.allFloorplanDevices.filter(d => d.deviceId == homeyDevice.id);
+        return device.length > 0 ? device[0] : null;
+    }
+
+    getHomeyDevice(floorplanDevice) {
+        var device = this.allHomeyDevices.filter(d => d.id == floorplanDevice.deviceId);
         return device.length > 0 ? device[0] : null;
     }
 
     activateHomeyDevice(homeyDevice) {
         this._activeHomeyDevice = homeyDevice;
-        this._activeFloorplanDevice = this.getFloorplanDeviceByHomeyDevice(homeyDevice);
+        this._activeFloorplanDevice = this.getFloorplanDevice(homeyDevice);
     }
 
     get activeHomeyDevice() {
@@ -114,6 +122,10 @@ class Floorplan_Devices {
 
     get allHomeyDevices() {
         return this._allHomeyDevices;
+    }
+
+    get devicesAreInitialized() {
+        return this._devicesAreInitialized;
     }
 }
 

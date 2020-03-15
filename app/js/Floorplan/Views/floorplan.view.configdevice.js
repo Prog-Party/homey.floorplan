@@ -13,7 +13,7 @@ document.addEventListener('onDevicesRetrieved', function (e) {
 
     _devices.allHomeyDevices.forEach(homeyDevice => {
 
-        var floorplanDevice = _devices.getFloorplanDeviceByHomeyDevice(homeyDevice);
+        var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
         var deviceObject = {floorplanDevice, homeyDevice};       
 
         if(floorplanDevice == null)
