@@ -87,6 +87,11 @@ input {
   display: flex;
   flex-direction: column;
   flex: 50%;
+  padding-right: 30px;
+}
+
+#configfloor_Form input {
+  width: 100%;
 }
 
 #configfloor_FloorOverview {
