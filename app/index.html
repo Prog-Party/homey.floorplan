@@ -54,6 +54,24 @@
         <div class="carousel-inner"></div>
       </div>
     </script>
+
+    <script id="configdevice_HomeyDeviceItemTemplate" type="text/x-jsrender">
+      <div class="row"> 
+          <div class="col-8"> 
+            {{if floorplanDevice == null}}
+              {{:homeyDevice.name}}
+            {{else}}
+              <a class='homey-device-button' data-device-id='{{:homeyDevice.id}}' href='#'>{{:homeyDevice.name}}</a>
+            {{/if}}
+          </div>
+          <div class="col-4">
+            {{if floorplanDevice == null}}
+              <a class='homey-device-button' data-device-id='{{:homeyDevice.id}}}' href='#'>Add to floorplan</a>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+    </script>
         
     <div id="container">
       
@@ -139,10 +157,18 @@
             <div id="configdevice_DeviceSettings">
               <h2>Device Settings</h2>
               <div id="configdevice_buttons">
-                <div>Position X<input type="range" class="form-control-range" id="configdevice_DeviceLocationX"></input></div>
-                <div>Position Y<input type="range" class="form-control-range" id="configdevice_DeviceLocationY"></input></div>
-                <div><a href="#" class="btn btn-primary" id="configdevice_UpdateDevice">Update Device</a></div>
-                <div><a href="#" class="btn btn-danger" id="configdevice_DeleteDevice">Delete Device</a></div>
+                <h3 id="configdevice_DeviceName"></h3>
+                <br />
+                <h3>Position X</h3>
+                <br />
+                <input type="range" class="form-control-range" id="configdevice_DeviceLocationX"></input>
+                <br />
+                <h3>Position Y</h3>
+                <input type="range" class="form-control-range" id="configdevice_DeviceLocationY"></input>
+                <br />
+                <a href="#" class="btn btn-primary" id="configdevice_UpdateDevice">Update Device</a>
+                <br />
+                <a href="#" class="btn btn-danger" id="configdevice_DeleteDevice">Delete Device</a>
             </div>
             </div>
           </div>
