@@ -24,3 +24,6 @@ $(document).on("click", "#configfloor_AddFloor", function() {
     _floors.addFloor($("#configfloor_name").val(), $("#configfloor_order").val(), $("#configfloor_image").val());
 });
 
+$(document).on("click", "#configfloor_UpdateFloor", function() {
+    _floors.updateFloor(_floors.activeFloor.id, $("#configfloor_name").val(), $("#configfloor_order").val(), $("#configfloor_image").val());
+});
