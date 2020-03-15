@@ -100,6 +100,14 @@ input {
   flex: 50%;
 }
 
+#configfloor_buttons > div {
+  margin-bottom: 10px;
+}
+
+  #configfloor_buttons > div a {
+    min-width: 250px;
+  }
+
  /********************/
  /** CONFIGDEVICE ***/
  /********************/
