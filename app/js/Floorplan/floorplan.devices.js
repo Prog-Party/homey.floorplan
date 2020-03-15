@@ -12,6 +12,7 @@ class Floorplan_Devices {
         this.onDevicesRetrievedEvent = new Event('onDevicesRetrieved');
 
         this.initializeEvents();
+        this._devicesAreInitialized = false;
     }
 
     initialize () {
@@ -51,9 +52,11 @@ class Floorplan_Devices {
     }
 
     renderAfterRetrieve() {
-        console.log("Try rendering");
         if(this.allHomeyDevices && this.allFloorplanDevices)
+        {
+            this._devicesAreInitialized = true;
             document.dispatchEvent(this.onDevicesRetrievedEvent);
+        }
         else
             console.log("Rendering not possible yet");
     }
@@ -100,16 +103,27 @@ class Floorplan_Devices {
         });
     }
 
-    getFloorplanDeviceByHomeyDevice(homeyDevice) {
+    getFloorplanDevice(homeyDevice) {
         var device = this.allFloorplanDevices.filter(d => d.deviceId == homeyDevice.id);
         return device.length > 0 ? device[0] : null;
     }
 
+<<<<<<< HEAD
     activateHomeyDevice(homeyDeviceId) {
         var device = _devices.allHomeyDevices.filter(d => d.id == homeyDeviceId)[0];
         this._activeHomeyDevice = device;
         this._activeFloorplanDevice = this.getFloorplanDeviceByHomeyDevice(device);
         document.dispatchEvent(this.onActivateDeviceEvent);
+=======
+    getHomeyDevice(floorplanDevice) {
+        var device = this.allHomeyDevices.filter(d => d.id == floorplanDevice.deviceId);
+        return device.length > 0 ? device[0] : null;
+    }
+
+    activateHomeyDevice(homeyDevice) {
+        this._activeHomeyDevice = homeyDevice;
+        this._activeFloorplanDevice = this.getFloorplanDevice(homeyDevice);
+>>>>>>> 2410f205d68b16b8f79843d819e21c8e8c5b69a2
     }
 
     get activeHomeyDevice() {
@@ -126,6 +140,10 @@ class Floorplan_Devices {
 
     get allHomeyDevices() {
         return this._allHomeyDevices;
+    }
+
+    get devicesAreInitialized() {
+        return this._devicesAreInitialized;
     }
 }
 

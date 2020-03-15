@@ -7,6 +7,7 @@ class Floorplan_Floors {
     constructor() {
         this.onActivateFloorEvent = new Event('onActivateFloor');
         this.onFloorsRetrievedEvent = new Event('onFloorsRetrieved');
+        this._floorsAreInitialized = false;
         this.initializeEvents();
     }
 
@@ -22,6 +23,7 @@ class Floorplan_Floors {
             _floors._allFloors = JSON.parse(json);
             _floors._allFloors = _floors.allFloors.sort((a,b) => a.order - b.order);
             
+            _floors._floorsAreInitialized = true;
             document.dispatchEvent(_floors.onFloorsRetrievedEvent);
         });
     }
@@ -86,6 +88,10 @@ class Floorplan_Floors {
 
     get allFloors() {
         return this._allFloors;
+    }
+
+    get floorsAreInitialized() {
+        return this._floorsAreInitialized;
     }
 }
 

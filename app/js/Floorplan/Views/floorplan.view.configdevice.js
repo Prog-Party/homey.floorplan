@@ -11,7 +11,8 @@ document.addEventListener('onDevicesRetrieved', function (e) {
     deviceListHomey.html("");
 
     _devices.allHomeyDevices.forEach(homeyDevice => {
-        var floorplanDevice = _devices.getFloorplanDeviceByHomeyDevice(homeyDevice);
+
+        var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
         var deviceObject = {floorplanDevice, homeyDevice};       
         deviceListHomey.append( $("#configdevice_HomeyDeviceItemTemplate").render(deviceObject));
     });
