@@ -51,7 +51,9 @@ window.addEventListener('load', function() {
     return homey.authenticate();
   }).then(function(homey_) {
     homey = homey_;
-    _homey = homey;
+    
+    var onHomeyLoadedEvent = new CustomEvent('onHomeyLoaded', {'detail': homey})
+    document.dispatchEvent(onHomeyLoadedEvent);
 
     renderHomey();    
     later.setInterval(function(){

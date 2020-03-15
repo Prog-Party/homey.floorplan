@@ -2,42 +2,45 @@ window.addEventListener('load', function() {
     _devices.initialize();
 });
 
- var _homey;
+document.addEventListener('onHomeyLoaded', function (obj) { 
+    _devices.initializeHomey(obj.detail);
+});
 
 class Floorplan_Devices {
-
-   
-   //     if(!_homey)
-    //    {
-            // homey isn't initialized yet, try again in a few ms
-    //        setTimeout(_devices.initializeDevices, 300);
-    //        return;
-    //    }
-        
-    //    _homey.devices.getDevices().then(function(devices) {
-    //        _devices.allDevices = devices;
-    //    });
-
     constructor() {
-        //this.onActivateFloorEvent = new Event('onActivateFloor');
         this.onDevicesRetrievedEvent = new Event('onDevicesRetrieved');
-        //this.initializeEvents();
     }
 
     initialize () {
-        this.retrieveAllDevices();
+        this.retrieveAllFloorplanDevices();
     }
 
-    retrieveAllDevices() {
+    initializeHomey(homey){
+        this._homey = homey;
+        
+        this._homey.devices.getDevices().then(function(devices) {
+           _devices._allHomeyDevices = devices;
+           _devices.renderAfterRetrieve();
+        });
+    }
+
+    retrieveAllFloorplanDevices() {
          var url = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllDevices?code=YxKxy4Ttn4ZVcA2zaK3Ay2J4bbMPMPLkPqu1LTfGGP3h//U0GRPp3w==";
          url += "&token=" + getToken();
 
         $.get(url, function(json) {
              console.log("Devices are retrieved");
-             _devices._allDevices = JSON.parse(json);
-            
-             document.dispatchEvent(_devices.onDevicesRetrievedEvent);
+             _devices._allFloorplanDevices = JSON.parse(json);
+             _devices.renderAfterRetrieve();
         });
+    }
+
+    renderAfterRetrieve() {
+        console.log("Try rendering");
+        if(this.allHomeyDevices && this.allDevices)
+            document.dispatchEvent(this.onDevicesRetrievedEvent);
+        else
+            console.log("Rendering not possible yet");
     }
 
     addDevice(deviceId, x, y, floorId) {
@@ -50,8 +53,8 @@ class Floorplan_Devices {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Adding device worked (${json})`);
-            _devices.retrieveAllDevices();
+            console.log(`Adding floorplan device worked (${json})`);
+            _devices.retrieveAllFloorplanDevices();
         });
     }
 
@@ -65,8 +68,8 @@ class Floorplan_Devices {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Updating device worked (${json})`);
-            _devices.retrieveAllDevices();
+            console.log(`Updating floorplan device worked (${json})`);
+            _devices.retrieveAllFloorplanDevices();
         });
     }
 
@@ -77,17 +80,27 @@ class Floorplan_Devices {
         
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Removing device worked (${json})`);
-            _devices.retrieveAllDevices();
+            console.log(`Removing floorplan device worked (${json})`);
+            _devices.retrieveAllFloorplanDevices();
         });
     }
 
-    // get activeFloor() {
-    //     return this._activeFloor;
-    // }
+    getFloorplanDeviceByHomeyDevice(homeyDevice) {
+        var device = this.allFloorplanDevices.filter(d => d.deviceId == homeyDevice.id);
+        return device.length > 0 ? device[0] : null;
+    }
 
-    get allDevices() {
-        return this._allDevices;
+    activateHomeyDevice(homeyDevice) {
+        this._activeHomeyDevice = homeyDevice;
+        this._activeFloorplanDevice = this.getFloorplanDeviceByHomeyDevice(homeyDevice);
+    }
+
+    get allFloorplanDevices() {
+        return this._allFloorplanDevices;
+    }
+
+    get allHomeyDevices() {
+        return this._allHomeyDevices;
     }
 }
 
