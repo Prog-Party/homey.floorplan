@@ -19,7 +19,12 @@ class Floorplan_Devices {
         this._homey = homey;
         
         this._homey.devices.getDevices().then(function(devices) {
-           _devices._allHomeyDevices = devices;
+            var array = [];
+            for (var key in devices) {
+                array.push(devices[key]);  // convert devices dict to list
+            }
+
+           _devices._allHomeyDevices = array;
            _devices.renderAfterRetrieve();
         });
     }

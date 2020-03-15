@@ -8,6 +8,11 @@ input {
   border: 1px solid black;
 }
 
+body .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
  #container {
    display:none;
  }
@@ -116,6 +121,29 @@ input {
   height: 100%; 
   width: 100%;
 }
+
+#configdevice_Layout {
+  height: 100%;
+}
+
+#configdevice_Layout > .row {
+  height: 100%;
+}
+
+#configdevice_Canvas {
+  background-repeat: no-repeat;
+  height: 100%;
+  max-width: 100%;
+  background-size: contain;
+}
+
+#configdevice_buttons > div {
+  margin-bottom: 10px;
+}
+
+  #configdevice_buttons > div a {
+    min-width: 250px;
+  }
 
  /********************/
  /** DE REST ***/

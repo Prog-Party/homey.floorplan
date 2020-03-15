@@ -1,6 +1,8 @@
 document.addEventListener('onActivateFloor', function (e) { 
 
     $("#floorplan_Canvas").css("background-image", `url(${_floors.activeFloor.img})`);
+    $("#floorplan_Canvas").html("");
+
  }, false);
 
 document.addEventListener('onFloorsRetrieved', function (e) { 
@@ -14,5 +16,7 @@ document.addEventListener('onFloorsRetrieved', function (e) {
         
     if(_floors.allFloors.length > 0) {
         _floors.activateFloor(_floors.allFloors[0].id);
+    } else {
+        $("#floorplan_Canvas").html("<div class='alert alert-warning'>LET OP configureer de vloeren.</div>");
     }
 }, false);
