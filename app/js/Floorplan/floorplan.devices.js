@@ -37,7 +37,7 @@ class Floorplan_Devices {
 
     renderAfterRetrieve() {
         console.log("Try rendering");
-        if(this.allHomeyDevices && this.allDevices)
+        if(this.allHomeyDevices && this.allFloorplanDevices)
             document.dispatchEvent(this.onDevicesRetrievedEvent);
         else
             console.log("Rendering not possible yet");
