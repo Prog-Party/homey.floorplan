@@ -100,6 +100,14 @@ class Floorplan_Devices {
         this._activeFloorplanDevice = this.getFloorplanDeviceByHomeyDevice(homeyDevice);
     }
 
+    get activeHomeyDevice() {
+        return this._activeHomeyDevice;
+    }
+
+    get activeFloorplanDevice() {
+        return this._activeFloorplanDevice;
+    }
+
     get allFloorplanDevices() {
         return this._allFloorplanDevices;
     }
