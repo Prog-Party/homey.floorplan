@@ -14,7 +14,7 @@ class Floorplan_Viewswitcher {
         ];
         this.initializeEvents();
 
-        this.switchToView("floorplan_View");
+        this.switchToView("configdevice_View");
     }
 
     initializeEvents() {       
