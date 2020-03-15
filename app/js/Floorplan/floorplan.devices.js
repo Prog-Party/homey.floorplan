@@ -19,7 +19,12 @@ class Floorplan_Devices {
         this._homey = homey;
         
         this._homey.devices.getDevices().then(function(devices) {
-           _devices._allHomeyDevices = devices;
+            var array = [];
+            for (var key in devices) {
+                array.push(devices[key]);  // convert devices dict to list
+            }
+
+           _devices._allHomeyDevices = array;
            _devices.renderAfterRetrieve();
         });
     }
@@ -37,7 +42,7 @@ class Floorplan_Devices {
 
     renderAfterRetrieve() {
         console.log("Try rendering");
-        if(this.allHomeyDevices && this.allDevices)
+        if(this.allHomeyDevices && this.allFloorplanDevices)
             document.dispatchEvent(this.onDevicesRetrievedEvent);
         else
             console.log("Rendering not possible yet");

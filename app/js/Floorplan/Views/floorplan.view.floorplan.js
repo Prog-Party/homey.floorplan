@@ -1,6 +1,4 @@
 document.addEventListener('onActivateFloor', function (e) { 
-
-    //$("#floorplan_Canvas").css("background-image", `url(${_floors.activeFloor.img})`);
     $(`#floorplan_CarouselHolder .carousel-item`).removeClass("active");
     $(`#floorplan_CarouselHolder .carousel-item[data-floor-id=${_floors.activeFloor.id}]`).addClass("active");
  }, false);
@@ -23,6 +21,8 @@ document.addEventListener('onFloorsRetrieved', function (e) {
 
     if(_floors.allFloors.length > 0) {
         _floors.activateFloor(_floors.allFloors[0].id);
+    } else {
+        $("#floorplan_Canvas").html("<div class='alert alert-warning'>LET OP configureer de vloeren.</div>");
     }
 
 }, false);

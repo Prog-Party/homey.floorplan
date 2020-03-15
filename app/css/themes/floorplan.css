@@ -8,6 +8,11 @@ input {
   border: 1px solid black;
 }
 
+body .row {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
  #container {
    display:none;
  }
@@ -24,7 +29,6 @@ input {
  /** FLOORPLAN ***/
  /********************/
 
-
 #floorplan_View,
 #floorplan_View #floorplan_CarouselHolder,
 #floorplan_View #floorplan_CarouselHolder .carousel,
@@ -33,43 +37,26 @@ input {
   width: 100%;
 }
 
-#floorplan_Layout {
-  height: 100%;
-  margin: auto;
-  width: 50%;
-}
-
-#floorplan_Canvas {
-  background-repeat: no-repeat;
-  height: 100%;
-  max-width: 100%;
-  background-size: contain;
-}
-
 #floorplan_FloorSwitcherMenu {
   position: absolute;
   top: 0;
   right: 0;
 }
 
-#floorplan_FloorSwitcherMenu > a {
-  display: block;
-}
+  #floorplan_FloorSwitcherMenu > a {
+    display: block;
+  }
 
  /********************/
  /** CONFIG ***/
  /********************/
 
-
-#config_Layout {
+ #config_View {
+  height: 100%; 
+  width: 100%;
   height: 100%;
   margin: auto;
   width: 50%;
-}
-
-#config_View {
-  height: 100%; 
-  width: 100%;
 }
 
 #config_Canvas {
@@ -85,10 +72,6 @@ input {
 
 #configfloor_View {
   height: 100%; 
-  width: 100%;
-}
-
-#configfloor_Layout {
   width: 50%;
   margin: auto;
   display: flex;
@@ -128,6 +111,25 @@ input {
   height: 100%; 
   width: 100%;
 }
+
+#configdevice_View > .row {
+  height: 100%;
+}
+
+#configdevice_Canvas {
+  background-repeat: no-repeat;
+  height: 100%;
+  max-width: 100%;
+  background-size: contain;
+}
+
+#configdevice_buttons > div {
+  margin-bottom: 10px;
+}
+
+  #configdevice_buttons > div a {
+    min-width: 250px;
+  }
 
  /********************/
  /** DE REST ***/
