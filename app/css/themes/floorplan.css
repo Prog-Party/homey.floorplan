@@ -86,6 +86,13 @@ input {
 #configfloor_Form {
   display: flex;
   flex-direction: column;
+  flex: 50%;
+}
+
+#configfloor_FloorOverview {
+  display: flex;
+  flex-direction: column;
+  flex: 50%;
 }
 
  /********************/
