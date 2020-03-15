@@ -8,21 +8,17 @@ document.addEventListener('onActivateFloor', function (e) {
 document.addEventListener('onDevicesRetrieved', function (e) { 
 
     var deviceListHomey = $("#configdevice_DeviceListHomey");
-
-    var device = '';
+    deviceListHomey.html("");
 
     _devices.allHomeyDevices.forEach(homeyDevice => {
 
         var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
         var deviceObject = {floorplanDevice, homeyDevice};       
-
-        if(floorplanDevice == null)
-            device += `<div><a class='device-button' data-device-id='${homeyDevice.id}' href='#'>Add</a></div>`;    
-        else
-            device += `Vinkje`;
-
-        device += `<div><a class='device-button' data-device-id='${homeyDevice.id}' href='#'>${homeyDevice.name}</a></div>`;
-        deviceListHomey.append(device);
+        deviceListHomey.append( $("#configdevice_HomeyDeviceItemTemplate").render(deviceObject));
     });
+}, false);
+
+document.addEventListener('onActivateDevice', function (e) { 
+    $("#configdevice_DeviceName").html(_devices.activeHomeyDevice.name);
 }, false);
 

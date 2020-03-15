@@ -8,12 +8,22 @@ document.addEventListener('onHomeyLoaded', function (obj) {
 
 class Floorplan_Devices {
     constructor() {
+        this.onActivateDeviceEvent = new Event('onActivateDevice');
         this.onDevicesRetrievedEvent = new Event('onDevicesRetrieved');
+
+        this.initializeEvents();
         this._devicesAreInitialized = false;
     }
 
     initialize () {
         this.retrieveAllFloorplanDevices();
+    }
+
+    initializeEvents() {
+        $(document).on("click", ".homey-device-button", function() {
+            var homeydeviceId = $(this).attr("data-device-id");
+            _devices.activateHomeyDevice(homeydeviceId);
+        });
     }
 
     initializeHomey(homey){
@@ -103,11 +113,13 @@ class Floorplan_Devices {
         return device.length > 0 ? device[0] : null;
     }
 
-    activateHomeyDevice(homeyDevice) {
-        this._activeHomeyDevice = homeyDevice;
-        this._activeFloorplanDevice = this.getFloorplanDevice(homeyDevice);
+    activateHomeyDevice(homeyDeviceId) {
+        var device = _devices.allHomeyDevices.filter(d => d.id == homeyDeviceId)[0];
+        this._activeHomeyDevice = device;
+        this._activeFloorplanDevice = this.getFloorplanDevice(device);
+        document.dispatchEvent(this.onActivateDeviceEvent);
     }
-
+    
     get activeHomeyDevice() {
         return this._activeHomeyDevice;
     }
