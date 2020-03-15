@@ -108,24 +108,18 @@ class Floorplan_Devices {
         return device.length > 0 ? device[0] : null;
     }
 
-<<<<<<< HEAD
-    activateHomeyDevice(homeyDeviceId) {
-        var device = _devices.allHomeyDevices.filter(d => d.id == homeyDeviceId)[0];
-        this._activeHomeyDevice = device;
-        this._activeFloorplanDevice = this.getFloorplanDeviceByHomeyDevice(device);
-        document.dispatchEvent(this.onActivateDeviceEvent);
-=======
     getHomeyDevice(floorplanDevice) {
         var device = this.allHomeyDevices.filter(d => d.id == floorplanDevice.deviceId);
         return device.length > 0 ? device[0] : null;
     }
 
-    activateHomeyDevice(homeyDevice) {
-        this._activeHomeyDevice = homeyDevice;
-        this._activeFloorplanDevice = this.getFloorplanDevice(homeyDevice);
->>>>>>> 2410f205d68b16b8f79843d819e21c8e8c5b69a2
+    activateHomeyDevice(homeyDeviceId) {
+        var device = _devices.allHomeyDevices.filter(d => d.id == homeyDeviceId)[0];
+        this._activeHomeyDevice = device;
+        this._activeFloorplanDevice = this.getFloorplanDevice(device);
+        document.dispatchEvent(this.onActivateDeviceEvent);
     }
-
+    
     get activeHomeyDevice() {
         return this._activeHomeyDevice;
     }
