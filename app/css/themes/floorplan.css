@@ -12,11 +12,23 @@ input {
    display:none;
  }
 
+#floorplan_View,
+#config_View,
+#configfloor_View,
+#configdevice_View
+ {
+   overflow: hidden;
+ }
+
  /********************/
  /** FLOORPLAN ***/
  /********************/
 
-#floorplan_View {
+
+#floorplan_View,
+#floorplan_View #floorplan_CarouselHolder,
+#floorplan_View #floorplan_CarouselHolder .carousel,
+#floorplan_View #floorplan_CarouselHolder .carousel .carousel-item {
   height: 100%; 
   width: 100%;
 }
