@@ -11,7 +11,7 @@ document.addEventListener('onFloorsRetrieved', function (e) {
     floorSwitcherMenu.html("");
 
     _floors.allFloors.forEach(floor => {
-        var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`;
+        var button = `<div><a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a><span> > ${floor.order}</span></div>`;
         floorSwitcherMenu.append(button);
     });
         
@@ -26,4 +26,13 @@ $(document).on("click", "#configfloor_AddFloor", function() {
 
 $(document).on("click", "#configfloor_UpdateFloor", function() {
     _floors.updateFloor(_floors.activeFloor.id, $("#configfloor_name").val(), $("#configfloor_order").val(), $("#configfloor_image").val());
+});
+
+$(document).on("click", "#configfloor_DeleteFloor", function() {
+    _floors.deleteFloor(_floors.activeFloor.id);
+
+    $("#configfloor_name").val("");
+    $("#configfloor_order").val("");
+    $("#configfloor_image").val("");
+    $("#configfloor_image_plot").attr("src", "");
 });
