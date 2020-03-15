@@ -70,3 +70,17 @@ function updateDeviceLocation() {
     sinlgeDevice.css("left", $("#configdevice_DeviceLocationX").val() + "%");
     sinlgeDevice.css("top", $("#configdevice_DeviceLocationY").val() + "%");
 }
+
+$(document).on("click", ".homey-device-to-floorplan-button", function() {
+    var homeydeviceId = $(this).attr("data-device-id");
+    _devices.activateHomeyDevice(homeydeviceId);
+    _devices.addDevice(homeydeviceId, 50, 50, _floors.activeFloor.id);
+});
+
+$(document).on("click", "#configdevice_UpdateDevice", function() {
+    _devices.updateDevice(_devices.activeHomeyDevice.id, $("#configdevice_DeviceLocationX").val(), $("#configdevice_DeviceLocationY").val(), _floors.activeFloor.id);
+});
+
+$(document).on("click", "#configdevice_DeleteDevice", function() {
+    _devices.deleteDevice(_devices.activeHomeyDevice.id);
+});
