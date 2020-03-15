@@ -41,12 +41,12 @@ function floorplan_renderDevices() {
     if(_floors.allFloors.length == 0)
        return; 
        
-    console.log("Render the devices on the screen.");
+    console.log("floorplan: render the devices on the screen.");
 
     //get the height and width of the img
     var currentFloor = _floors.activeFloor;
 
-    var currentFloorHtml = $("#floorplan_View .carousel-item.active");
+    var currentFloorHtml = $("#floorplan_View .floor-with-devices.active");
     var deviceHolder = $(currentFloorHtml).find(".device-holder");
     deviceHolder.html("");
     var floorImage = $(currentFloorHtml).find("img");
@@ -56,7 +56,7 @@ function floorplan_renderDevices() {
     _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
         var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
         var data = {homeyDevice, floorplanDevice};
-        console.log(`Add device ${homeyDevice.name} to viewer`);
-        deviceHolder.append($("#floorplan_SingleDeviceTemplate").render(data));
+        console.log(`Add device ${homeyDevice.name} to floorplan viewer`);
+        deviceHolder.append($("#SingleDeviceTemplate").render(data));
     });
 }
