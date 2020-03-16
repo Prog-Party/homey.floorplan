@@ -135,6 +135,10 @@ body .row {
   height: 100%;
 }
 
+#configdevice_View .floor-with-devices {
+  padding-left: 0px;
+}
+
 #configdevice_buttons > div {
   margin-bottom: 10px;
 }
