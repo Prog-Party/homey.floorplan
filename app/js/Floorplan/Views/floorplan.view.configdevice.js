@@ -31,6 +31,8 @@ document.addEventListener('onFloorsRetrieved', function (e) {
 
 document.addEventListener('onActivateDevice', function (e) { 
     $("#configdevice_DeviceName").html(_devices.activeHomeyDevice.name);
+    $("#configdevice_DeviceLocationX").val(parseFloat(_devices.activeFloorplanDevice.x) * 100);
+    $("#configdevice_DeviceLocationY").val(parseFloat(_devices.activeFloorplanDevice.y) * 100);
 }, false);
 
 
@@ -67,8 +69,12 @@ function updateDeviceLocation() {
     console.log("Device locatie is veranderd");
     var homeyId = _devices.activeHomeyDevice.id;
     var sinlgeDevice = $(`#configdevice_View .single-device[data-device-id=${homeyId}]`);
-    sinlgeDevice.css("left", $("#configdevice_DeviceLocationX").val() + "%");
-    sinlgeDevice.css("top", $("#configdevice_DeviceLocationY").val() + "%");
+
+    var xLocation = parseFloat($("#configdevice_DeviceLocationX").val())/100;
+    var yLocation = parseFloat($("#configdevice_DeviceLocationY").val())/100;
+
+    sinlgeDevice.css("left", xLocation + "%");
+    sinlgeDevice.css("top", yLocation + "%");
 }
 
 $(document).on("click", ".homey-device-to-floorplan-button", function() {
@@ -78,7 +84,10 @@ $(document).on("click", ".homey-device-to-floorplan-button", function() {
 });
 
 $(document).on("click", "#configdevice_UpdateDevice", function() {
-    _devices.updateDevice(_devices.activeHomeyDevice.id, $("#configdevice_DeviceLocationX").val(), $("#configdevice_DeviceLocationY").val(), _floors.activeFloor.id);
+    var xLocation = parseFloat($("#configdevice_DeviceLocationX").val())/100;
+    var yLocation = parseFloat($("#configdevice_DeviceLocationY").val())/100;
+
+    _devices.updateDevice(_devices.activeHomeyDevice.id, xLocation, yLocation, _floors.activeFloor.id);
 });
 
 $(document).on("click", "#configdevice_DeleteDevice", function() {
