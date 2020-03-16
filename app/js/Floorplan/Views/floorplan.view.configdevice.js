@@ -4,6 +4,10 @@ window.addEventListener('load', function() {
     });
 });
 
+document.addEventListener('onViewChanged', function() {
+    configdevice_renderDevices();
+}, false);
+
 document.addEventListener('onActivateFloor', function (e) { 
 
     $("#configdevice_Floor").attr("src", _floors.activeFloor.img);

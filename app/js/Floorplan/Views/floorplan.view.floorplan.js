@@ -1,3 +1,7 @@
+document.addEventListener('onViewChanged', function() {
+    floorplan_renderDevices();
+}, false);
+
 document.addEventListener('onActivateFloor', function (e) { 
     $(`#floorplan_CarouselHolder .carousel-item`).removeClass("active");
     $(`#floorplan_CarouselHolder .carousel-item[data-floor-id=${_floors.activeFloor.id}]`).addClass("active");

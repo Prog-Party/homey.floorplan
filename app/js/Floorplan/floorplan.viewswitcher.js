@@ -4,7 +4,8 @@ window.addEventListener('load', function() {
 
 class Floorplan_Viewswitcher {
 
-    initialize() {
+    constructor() {
+        this.onViewChangedEvent = new Event('onViewChanged');
         
         this.views = [ 
             { id: 1, viewId: "floorplan_View", buttonId: "floorplan_Button", buttonsToShow: [2] },
@@ -12,8 +13,10 @@ class Floorplan_Viewswitcher {
             { id: 3, viewId: "configfloor_View", buttonId: "configfloor_Button", buttonsToShow: [2] },
             { id: 4, viewId: "configdevice_View", buttonId: "configdevice_Button", buttonsToShow: [2] }
         ];
-        this.initializeEvents();
+    }
 
+    initialize() {
+        this.initializeEvents();
         this.switchToView("configdevice_View");
     }
 
@@ -30,6 +33,8 @@ class Floorplan_Viewswitcher {
         
         this.hideAllViews();
         this.showView(viewId);
+        
+        document.dispatchEvent(this.onViewChangedEvent);
     }
 
     get activeView() {
