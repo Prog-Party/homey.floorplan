@@ -146,7 +146,11 @@ body .row {
   #configdevice_buttons > div a {
     min-width: 250px;
   }
-  
+
+#configdevice_FloorSelector {
+  min-width: 250px;
+  margin-bottom: 10px;
+}
   
 #configdevice_View #configdevice_Floor {
   width: auto;

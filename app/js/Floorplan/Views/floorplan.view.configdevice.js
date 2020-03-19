@@ -9,18 +9,14 @@ document.addEventListener('onViewChanged', function() {
 }, false);
 
 document.addEventListener('onActivateFloor', function (e) { 
-
     $("#configdevice_Floor").attr("src", _floors.activeFloor.img);
-
 }, false);
 
 document.addEventListener('onDevicesRetrieved', function (e) { 
-
     var deviceListHomey = $("#configdevice_DeviceListHomey");
     deviceListHomey.html("");
 
     _devices.allHomeyDevices.forEach(homeyDevice => {
-
         var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
         var deviceObject = {floorplanDevice, homeyDevice};       
         deviceListHomey.append( $("#configdevice_HomeyDeviceItemTemplate").render(deviceObject));
@@ -30,6 +26,14 @@ document.addEventListener('onDevicesRetrieved', function (e) {
 }, false);
 
 document.addEventListener('onFloorsRetrieved', function (e) {
+    var floorSwitcherMenu = $("#configdevice_FloorSwitcherMenu");
+    floorSwitcherMenu.html("");
+
+    _floors.allFloors.forEach(floor => {
+        var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`;
+        floorSwitcherMenu.append(button);
+    });
+
     configdevice_renderDevices();
 }, false);
 
@@ -37,8 +41,16 @@ document.addEventListener('onActivateDevice', function (e) {
     $("#configdevice_DeviceName").html(_devices.activeHomeyDevice.name);
     $("#configdevice_DeviceLocationX").val(parseFloat(_devices.activeFloorplanDevice.x) * 100);
     $("#configdevice_DeviceLocationY").val(parseFloat(_devices.activeFloorplanDevice.y) * 100);
-}, false);
 
+    $("#configdevice_FloorSelector").empty();
+    _floors.allFloors.forEach(floor => {
+        $("#configdevice_FloorSelector").append( new Option(floor.name, floor.id));
+    });
+
+    $("#configdevice_FloorSelector").val(_devices.activeFloorplanDevice.floorId);
+    _floors.activateFloor(_devices.activeFloorplanDevice.floorId);
+
+}, false);
 
 function configdevice_renderDevices() {
     if(!_floors.floorsAreInitialized || !_devices.devicesAreInitialized)
@@ -85,6 +97,10 @@ $(document).on("click", ".homey-device-to-floorplan-button", function() {
     var homeydeviceId = $(this).attr("data-device-id");
     _devices.activateHomeyDevice(homeydeviceId);
     _devices.addDevice(homeydeviceId, 50, 50, _floors.activeFloor.id);
+});
+
+$(document).on("change", "#configdevice_FloorSelector", function() {
+    _floors.activateFloor($("#configdevice_FloorSelector").val());
 });
 
 $(document).on("click", "#configdevice_UpdateDevice", function() {
