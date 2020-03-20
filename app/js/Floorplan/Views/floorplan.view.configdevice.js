@@ -50,6 +50,8 @@ document.addEventListener('onActivateDevice', function (e) {
     $("#configdevice_FloorSelector").val(_devices.activeFloorplanDevice.floorId);
     _floors.activateFloor(_devices.activeFloorplanDevice.floorId);
 
+    configdevice_renderDevices();
+
 }, false);
 
 function configdevice_renderDevices() {
