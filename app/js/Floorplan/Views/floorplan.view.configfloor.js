@@ -6,6 +6,10 @@ document.addEventListener('onActivateFloor', function (e) {
 
  }, false);
 
+ window.addEventListener("resize", function(e){
+     renderDevicesToFloorplan();
+ });
+
 document.addEventListener('onFloorsRetrieved', function (e) { 
     var floorSwitcherMenu = $("#configfloor_FloorOverview");
     floorSwitcherMenu.html("");

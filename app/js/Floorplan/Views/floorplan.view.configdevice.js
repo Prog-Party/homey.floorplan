@@ -4,6 +4,10 @@ window.addEventListener('load', function() {
     });
 });
 
+window.addEventListener("resize", function(e){
+    configdevice_renderDevices();
+});
+
 document.addEventListener('onViewChanged', function() {
     configdevice_renderDevices();
 }, false);
@@ -42,19 +46,17 @@ document.addEventListener('onFloorsRetrieved', function (e) {
 }, false);
 
 document.addEventListener('onActivateDevice', function (e) { 
-    debugger;
     $("#configdevice_DeviceSettings").show();
     $("#configdevice_DeviceName").html(_devices.activeHomeyDevice.name);
 
-    if(_devices.activeFloorplanDevice)
-    {
+    if(_devices.activeFloorplanDevice) {
         $("#configdevice_DeviceLocationX").val(parseFloat(_devices.activeFloorplanDevice.x) * 100);
         $("#configdevice_DeviceLocationY").val(parseFloat(_devices.activeFloorplanDevice.y) * 100);
     } else {
         $("#configdevice_DeviceLocationX").val(50 * 100);
         $("#configdevice_DeviceLocationY").val(50 * 100);
     }
-    
+
     $("#configdevice_FloorSelector").empty();
     _floors.allFloors.forEach(floor => {
         $("#configdevice_FloorSelector").append( new Option(floor.name, floor.id));
