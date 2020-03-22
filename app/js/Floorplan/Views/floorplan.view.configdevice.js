@@ -42,11 +42,19 @@ document.addEventListener('onFloorsRetrieved', function (e) {
 }, false);
 
 document.addEventListener('onActivateDevice', function (e) { 
+    debugger;
     $("#configdevice_DeviceSettings").show();
     $("#configdevice_DeviceName").html(_devices.activeHomeyDevice.name);
-    $("#configdevice_DeviceLocationX").val(parseFloat(_devices.activeFloorplanDevice.x) * 100);
-    $("#configdevice_DeviceLocationY").val(parseFloat(_devices.activeFloorplanDevice.y) * 100);
 
+    if(_devices.activeFloorplanDevice)
+    {
+        $("#configdevice_DeviceLocationX").val(parseFloat(_devices.activeFloorplanDevice.x) * 100);
+        $("#configdevice_DeviceLocationY").val(parseFloat(_devices.activeFloorplanDevice.y) * 100);
+    } else {
+        $("#configdevice_DeviceLocationX").val(50 * 100);
+        $("#configdevice_DeviceLocationY").val(50 * 100);
+    }
+    
     $("#configdevice_FloorSelector").empty();
     _floors.allFloors.forEach(floor => {
         $("#configdevice_FloorSelector").append( new Option(floor.name, floor.id));
@@ -92,7 +100,7 @@ function configdevice_renderDevices() {
     removeLoader("configdevice_DeleteDevice_Loader");
 
     var currentFloorHtml = $("#configdevice_View .floor-with-devices");
-        
+
     renderDevicesToFloorplan(currentFloorHtml);
 }
 
