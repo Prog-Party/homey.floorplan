@@ -10,6 +10,7 @@ class Floorplan_Devices {
     constructor() {
         this.onActivateDeviceEvent = new Event('onActivateDevice');
         this.onDevicesRetrievedEvent = new Event('onDevicesRetrieved');
+        this.onDeviceDeletedEvent = new Event('onDeviceDeleted');
 
         this.initializeEvents();
         this._devicesAreInitialized = false;
@@ -99,6 +100,7 @@ class Floorplan_Devices {
         console.log(url);
         $.get(url, function(json) {
             console.log(`Removing floorplan device worked (${json})`);
+            document.dispatchEvent(_devices.onDeviceDeletedEvent);
             _devices.retrieveAllFloorplanDevices();
         });
     }

@@ -159,6 +159,10 @@ body .row {
   max-height: 100%;
 }
 
+#configdevice_View #configdevice_FloorSwitcherMenu > a {
+  display: block;
+}
+
  /********************/
  /** DE REST ***/
  /********************/
@@ -215,4 +219,18 @@ body .row {
   height: 25px;
   background: #4CAF50;
   cursor: pointer;
+}
+
+/************ Plaatjes *********/
+.w64 {
+  width: 64px; 
+  height: 64px;
+}
+.w32 {
+  width: 32px; 
+  height: 32px;
+}
+.w16 {
+  width: 16px; 
+  height: 16px;
 }

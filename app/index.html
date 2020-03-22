@@ -117,20 +117,7 @@
 
     <div id="floorplan_View">
       <div id="floorplan_CarouselHolder">
-        <?xml version="1.0" encoding="utf-8"?>
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: rgb(241, 242, 243) none repeat scroll 0% 0%; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-          <rect x="17.5" y="30" width="15" height="40" fill="#1d3f72">
-          <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
-          <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
-          </rect>
-          <rect x="42.5" y="30" width="15" height="40" fill="#5699d2">
-          <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-          <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-          </rect>
-          <rect x="67.5" y="30" width="15" height="40" fill="#d8ebf9">
-          <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-          <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1" values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-          </rect></svg>
+        <img src="img/loader.gif" />
       </div>
       <div id="floorplan_FloorSwitcherMenu"></div>
     </div>
@@ -148,9 +135,9 @@
         <div><img id="configfloor_image_plot" height="100" width="100"></div>
 
         <div id="configfloor_buttons">
-          <div><a href="#" class="btn btn-success" id="configfloor_AddFloor">Add Floor</a></div>
-          <div><a href="#" class="btn btn-primary" id="configfloor_UpdateFloor">Update Floor</a></div>
-          <div><a href="#" class="btn btn-danger" id="configfloor_DeleteFloor">Delete Floor</a></div>
+          <div><a href="#" class="btn btn-success" data-loader="configfloor_AddFloorLoader" id="configfloor_AddFloor">Add Floor</a></div>
+          <div><a href="#" class="btn btn-primary" data-loader="configfloor_UpdateFloorLoader" id="configfloor_UpdateFloor">Update Floor</a></div>
+          <div><a href="#" class="btn btn-danger" data-loader="configfloor_DeleteFloorLoader" id="configfloor_DeleteFloor">Delete Floor</a></div>
         </div>
       </div>
       <div id="configfloor_FloorOverview">
@@ -160,11 +147,11 @@
     <div id="configdevice_View">
         <div class="row">
           <div class="col-6 floor-with-devices">
-            <img id="configdevice_Floor" />
+            <img id="configdevice_Floor" src="img/loader.gif" />
             <div class="device-holder"></div>
           </div>
           <div class="col-3">
-            <div id="configdevice_DeviceSettings">
+            <div id="configdevice_DeviceSettings" style="display:none;">
               <h2>Device Settings</h2>
               <div id="configdevice_buttons">
                 <h3 id="configdevice_DeviceName"></h3>
@@ -179,17 +166,22 @@
                 <select id="configdevice_FloorSelector" class="btn btn-secondary dropdown-toggle"></select>
                 <br />
                 <div id="configdevice_buttons">
-                  <div><a href="#" class="btn btn-primary" id="configdevice_UpdateDevice">Update Device</a></div>
-                  <div><a href="#" class="btn btn-danger" id="configdevice_DeleteDevice">Delete Device</a></div>
+                  <div><a href="#" class="btn btn-primary" data-loader="configdevice_UpdateDevice_Loader" id="configdevice_UpdateDevice">Update Device</a></div>
+                  <div><a href="#" class="btn btn-danger" data-loader="configdevice_DeleteDevice_Loader" id="configdevice_DeleteDevice">Delete Device</a></div>
                 </div>
             </div>
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-3" style="overflow: auto;">
               <h2>Device List Homey</h2>
             <div id="configdevice_DeviceListHomey">
+              Homey devices worden opgehaald...
+              <br /><img src="img/loader.gif" class="w64" />
             </div>
-            <div id="configdevice_FloorSwitcherMenu">floorplan list</div>
+            <h2>Verdiepingen</h2>
+            <div id="configdevice_FloorSwitcherMenu">
+              Verdiepingen worden ingeladen...
+              <br /><img src="img/loader.gif" class="w64" /></div>
           </div>
         </div>
       </div>

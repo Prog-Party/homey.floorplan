@@ -47,20 +47,6 @@ function floorplan_renderDevices() {
        
     console.log("floorplan: render the devices on the screen.");
 
-    //get the height and width of the img
-    var currentFloor = _floors.activeFloor;
-
     var currentFloorHtml = $("#floorplan_View .floor-with-devices.active");
-    var deviceHolder = $(currentFloorHtml).find(".device-holder");
-    deviceHolder.html("");
-    var floorImage = $(currentFloorHtml).find("img");
-    deviceHolder.height(floorImage.height());
-    deviceHolder.width(floorImage.width());
-
-    _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
-        var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
-        var data = {homeyDevice, floorplanDevice};
-        console.log(`Add device ${homeyDevice.name} to floorplan viewer`);
-        deviceHolder.append($("#SingleDeviceTemplate").render(data));
-    });
+    renderDevicesToFloorplan(currentFloorHtml);
 }
