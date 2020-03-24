@@ -22,6 +22,8 @@ document.addEventListener('onActivateFloor', function (e) {
             $(o).addClass("active");
         }
     });
+
+    configdevice_renderDevices();
 }, false);
 
 document.addEventListener('onDevicesRetrieved', function (e) { 
@@ -39,6 +41,7 @@ document.addEventListener('onDevicesRetrieved', function (e) {
 
 document.addEventListener('onDeviceDeleted', function(e) {
     $("#configdevice_DeviceSettings").hide();
+    configdevice_renderDevices();
 }, false);
 
 document.addEventListener('onFloorsRetrieved', function (e) {
