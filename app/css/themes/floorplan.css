@@ -234,3 +234,12 @@ body .row {
   width: 16px; 
   height: 16px;
 }
+
+/************ Single device (no matter where they are) *********/
+.single-device {
+  cursor: pointer;
+}
+
+  .single-device.device-on {
+    background-color: #ffe138;
+  }

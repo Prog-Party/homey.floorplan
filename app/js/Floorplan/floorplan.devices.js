@@ -31,16 +31,64 @@ class Floorplan_Devices {
         this._homey = homey;
         
         this._homey.devices.getDevices().then(function(devices) {
-            var array = [];
-            for (var key in devices) {
+            let array = [];
+            for (let key in devices) {
                 array.push(devices[key]);  // convert devices dict to list
             }
 
            _devices._allHomeyDevices = array;
+           _devices._allHomeyDevices.forEach(h => {
+               let isOn = h.capabilitiesObj && h.capabilitiesObj[h.ui.quickAction] && h.capabilitiesObj[h.ui.quickAction].value === true;
+               h.isOn = isOn;
+           });
            _devices.renderAfterRetrieve();
+           _devices.trackDeviceEvents();
         });
     }
 
+    trackDeviceEvents() {
+        console.log("Track device events");
+        _devices._allHomeyDevices.forEach(function(device){
+            if(!device || !device.ui || !device.ui.quickAction)
+                return;
+
+            device.makeCapabilityInstance(device.ui.quickAction, function(value){
+                //_devices.turnDeviceOnOff(device.id, value);
+                console.log(`Device ${device.name} (${device.id}) is turned ${value == true ? "on" : "off"}`);
+                var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
+                device.isOn = value;
+                if(value)
+                    singleDevice.addClass("device-on");
+                else
+                    singleDevice.removeClass("device-on");
+            });
+          });
+    }
+
+    turnDeviceOn(deviceId) {    
+        this.toggleDevice(deviceId, true);
+    }
+    
+    turnDeviceOff(deviceId) {
+        this.toggleDevice(deviceId, false);
+    }
+
+    toggleDevice(deviceId, value) {
+        var device = this.getHomeyDeviceById(deviceId); 
+        
+        if(!device || !device.ui || !device.ui.quickAction)
+        {
+            console.log(`You tried to turn ${value == true ? "on" : "off"}, but this is not possible for the device ${device.name} (${device.id}).`);
+            return;
+        }
+
+        this._homey.devices.setCapabilityValue({
+            deviceId: device.id,
+            capabilityId: device.ui.quickAction,
+            value: value,
+          }).catch(console.error);       
+    }
+    
     retrieveAllFloorplanDevices() {
          var url = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllDevices?code=YxKxy4Ttn4ZVcA2zaK3Ay2J4bbMPMPLkPqu1LTfGGP3h//U0GRPp3w==";
          url += "&token=" + getToken();
@@ -111,7 +159,11 @@ class Floorplan_Devices {
     }
 
     getHomeyDevice(floorplanDevice) {
-        var device = this.allHomeyDevices.filter(d => d.id == floorplanDevice.deviceId);
+        return this.getHomeyDeviceById(floorplanDevice.deviceId);
+    }
+
+    getHomeyDeviceById(deviceId) {
+        var device = this.allHomeyDevices.filter(d => d.id == deviceId);
         return device.length > 0 ? device[0] : null;
     }
 

@@ -1,7 +1,10 @@
+window.addEventListener('load', function() {
+    $(document).on('click', '#floorplan_View .single-device', floorplan_singleDeviceClick);
+});
+
 document.addEventListener('onViewChanged', function() {
     floorplan_renderDevices();
 }, false);
-
 
 window.addEventListener("resize", function(e){
     floorplan_renderDevices();
@@ -54,4 +57,13 @@ function floorplan_renderDevices() {
 
     var currentFloorHtml = $("#floorplan_View .floor-with-devices.active");
     renderDevicesToFloorplan(currentFloorHtml);
+}
+
+function floorplan_singleDeviceClick() {
+    var device = $(this);
+    var deviceId = $(device).attr("data-device-id");
+    if(device.hasClass("device-on")) 
+        _devices.turnDeviceOff(deviceId);
+    else
+        _devices.turnDeviceOn(deviceId);
 }
