@@ -236,10 +236,10 @@ body .row {
 }
 
 /************ Single device (no matter where they are) *********/
-.single-device {
+#floorplan_View .single-device {
   cursor: pointer;
 }
 
-  .single-device.device-on {
+  #floorplan_View .single-device.device-on {
     background-color: #ffe138;
   }
