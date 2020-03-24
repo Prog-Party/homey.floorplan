@@ -14,6 +14,14 @@ document.addEventListener('onViewChanged', function() {
 
 document.addEventListener('onActivateFloor', function (e) { 
     $("#configdevice_Floor").attr("src", _floors.activeFloor.img);
+    
+    $("#configdevice_FloorSwitcherMenu").find('a').each((i, o) => {
+        $(o).removeClass("active");
+
+        if ($(o).attr("data-floor-id") == _floors.activeFloor.id) {
+            $(o).addClass("active");
+        }
+    });
 }, false);
 
 document.addEventListener('onDevicesRetrieved', function (e) { 
@@ -38,10 +46,10 @@ document.addEventListener('onFloorsRetrieved', function (e) {
     floorSwitcherMenu.html("");
 
     _floors.allFloors.forEach(floor => {
-        var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`;
+        var button = `<a class='floor-button nav-link' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`;
         floorSwitcherMenu.append(button);
     });
-
+    
     configdevice_renderDevices();
 }, false);
 
