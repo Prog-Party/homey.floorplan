@@ -63,7 +63,7 @@
     </script>
 
     <script id="configdevice_HomeyDeviceItemTemplate" type="text/x-jsrender">
-      <div class="card">
+      <div class="card" data-driver-id="{{:homeyDevice.driverId}}" data-driver-uri="{{:homeyDevice.driverUri}}" data-virtual-class="{{:homeyDevice.virtualClass}}" data-class="{{:homeyDevice.class}}">
         <div class="row"> 
             <div class="col-8"> 
               <img style="height: 32px; width: 32px;" src="https://icons-cdn.athom.com/{{:homeyDevice.iconObj.id}}-32.png" />
@@ -174,6 +174,11 @@
           </div>
           <div class="col-3" style="overflow: auto;">
               <h2>Device List Homey</h2>
+              <select id="configdevice_Order">
+                <option value="name">Op naam</option>
+                <option value="type">Op merk</option>
+                <option value="isadded" selected="selected">Is toegevoegd</option>
+              </select>
             <div id="configdevice_DeviceListHomey">
               Homey devices worden opgehaald...
               <br /><img src="img/loader.gif" class="w64" />

@@ -2,6 +2,16 @@ $(function() {
     initDataLoader();
 });
 
+function sortByName(nameA, nameB) {
+    return nameA < nameB ? -1 : (nameA > nameB ? 1 : 0);
+}
+
+function sortByNullable(objectA, objectB) {
+    if(objectA == null && objectB != null)
+        return -1;
+    return 1;
+}
+
 function getToken() {
     var urlParams = new URLSearchParams(window.location.search);
     var token = urlParams.get("token");
@@ -19,6 +29,8 @@ function renderDevicesToFloorplan(currentFloorHtml) {
     deviceHolder.height(floorImage.height());
     deviceHolder.width(floorImage.width());
 
+    if(!_devices.allFloorplanDevices)
+        return;
     _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
         var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
         var data = {homeyDevice, floorplanDevice};

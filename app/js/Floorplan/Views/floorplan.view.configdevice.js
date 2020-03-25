@@ -27,15 +27,7 @@ document.addEventListener('onActivateFloor', function (e) {
 }, false);
 
 document.addEventListener('onDevicesRetrieved', function (e) { 
-    var deviceListHomey = $("#configdevice_DeviceListHomey");
-    deviceListHomey.html("");
-
-    _devices.allHomeyDevices.forEach(homeyDevice => {
-        var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
-        var deviceObject = {floorplanDevice, homeyDevice};       
-        deviceListHomey.append( $("#configdevice_HomeyDeviceItemTemplate").render(deviceObject));
-    });
-    
+    configdevice_renderDeviceList();    
     configdevice_renderDevices();
 }, false);
 
@@ -100,6 +92,37 @@ $(document).on("click", "#configdevice_UpdateDevice", function() {
 $(document).on("click", "#configdevice_DeleteDevice", function() {
     _devices.deleteDevice(_devices.activeHomeyDevice.id);
 });
+
+$(document).on("change", "#configdevice_Order", function() {
+    configdevice_renderDeviceList();
+});
+
+function configdevice_renderDeviceList() {
+    console.log("configdevice: Render the devices list");
+
+    var deviceObjectList = [];
+    _devices.allHomeyDevices.forEach(homeyDevice => {
+        var floorplanDevice = _devices.getFloorplanDevice(homeyDevice);
+        var deviceObject = {floorplanDevice, homeyDevice}; 
+        deviceObjectList.push(deviceObject);
+    });
+    
+    var selectedOrder = $("#configdevice_Order").val();
+    if(selectedOrder == "name")
+        deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.name, y.homeyDevice.name));
+    else if (selectedOrder == "type")
+        deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.driverUri + x.homeyDevice.driverId, y.homeyDevice.driverUri + y.homeyDevice.driverId));
+    else if (selectedOrder == "isadded")
+        deviceObjectList.sort((x, y) => sortByNullable(x.floorplanDevice, y.floorplanDevice));
+        
+    var deviceListHomey = $("#configdevice_DeviceListHomey");
+    deviceListHomey.html("");
+
+    deviceObjectList.forEach(d => {
+        deviceListHomey.append( $("#configdevice_HomeyDeviceItemTemplate").render(d));
+    });
+}
+
 
 function configdevice_renderDevices() {
     if(!_floors.floorsAreInitialized || !_devices.devicesAreInitialized)
