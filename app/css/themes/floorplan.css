@@ -180,6 +180,15 @@ body .row {
   display: block;
 }
 
+.device-holder .single-device {
+  opacity: 40%;
+}
+
+.device-holder .active-device
+{
+  opacity: 100%;
+}
+
  /********************/
  /** DE REST ***/
  /********************/

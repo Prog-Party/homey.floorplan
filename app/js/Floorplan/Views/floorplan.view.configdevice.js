@@ -70,6 +70,9 @@ document.addEventListener('onActivateDevice', function (e) {
 
     configdevice_renderDevices();
 
+    $(".single-device").removeClass("active-device");
+    $(`.single-device[data-device-id='${_devices.activeHomeyDevice.id}']`).addClass("active-device");
+
 }, false);
 
 $(document).on("click", ".homey-device-to-floorplan-button", function() {
