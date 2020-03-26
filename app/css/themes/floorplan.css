@@ -180,7 +180,7 @@ body .row {
   display: block;
 }
 
-.device-holder .single-device {
+#configdevice_View .device-holder .single-device {
   opacity: 40%;
 }
 
