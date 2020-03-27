@@ -4,13 +4,8 @@ window.addEventListener('load', function() {
     });
 });
 
-window.addEventListener("resize", function(e){
-    configdevice_renderDevices();
-});
-
-document.addEventListener('onViewChanged', function() {
-    configdevice_renderDevices();
-}, false);
+window.addEventListener("resize", configdevice_renderDevices);
+document.addEventListener('onViewChanged', configdevice_renderDevices);
 
 document.addEventListener('onActivateFloor', function (e) { 
     $("#configdevice_Floor").attr("src", _floors.activeFloor.img);

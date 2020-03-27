@@ -1,14 +1,18 @@
 window.addEventListener('load', function() {
-    $(document).on('click', '#floorplan_View .single-device', floorplan_singleDeviceClick);
 });
 
-document.addEventListener('onViewChanged', function() {
-    floorplan_renderDevices();
-}, false);
-
-window.addEventListener("resize", function(e){
-    floorplan_renderDevices();
+$(document).on('click', '#floorplan_View .single-device', function() {
+    var device = $(this);
+    var deviceId = $(device).attr("data-device-id");
+    if(device.hasClass("device-on")) 
+        _devices.turnDeviceOff(deviceId);
+    else
+        _devices.turnDeviceOn(deviceId);
 });
+
+document.addEventListener('onViewChanged', floorplan_renderDevices);
+window.addEventListener("resize", floorplan_renderDevices);
+document.addEventListener('onDevicesRetrieved', floorplan_renderDevices);
 
 document.addEventListener('onActivateFloor', function (e) { 
     $(`#floorplan_CarouselHolder .carousel-item`).removeClass("active");
@@ -32,17 +36,11 @@ document.addEventListener('onFloorsRetrieved', function (e) {
     });
 
     $('#floorplan_CarouselHolder .carousel').carousel({interval: 0});
-
-    if(_floors.allFloors.length > 0) {
-        _floors.activateFloor(_floors.allFloors[0].id);
-    } else {
+    
+    if(_floors.allFloors.length == 0) {
         $("#floorplan_View").html("<div class='alert alert-warning' style='margin-left:25%;margin-right:25%'>LET OP: configureer de vloeren.</div>");
     }
 
-    floorplan_renderDevices();
-}, false);
-
-document.addEventListener('onDevicesRetrieved', function (e) { 
     floorplan_renderDevices();
 }, false);
 
@@ -52,18 +50,12 @@ function floorplan_renderDevices() {
 
     if(_floors.allFloors.length == 0)
        return; 
+
+    if(!_floors._activeFloor)
+        return;
        
     console.log("floorplan: render the devices on the screen.");
 
     var currentFloorHtml = $("#floorplan_View .floor-with-devices.active");
     renderDevicesToFloorplan(currentFloorHtml);
-}
-
-function floorplan_singleDeviceClick() {
-    var device = $(this);
-    var deviceId = $(device).attr("data-device-id");
-    if(device.hasClass("device-on")) 
-        _devices.turnDeviceOff(deviceId);
-    else
-        _devices.turnDeviceOn(deviceId);
 }

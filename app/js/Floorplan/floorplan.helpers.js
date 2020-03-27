@@ -29,12 +29,18 @@ function renderDevicesToFloorplan(currentFloorHtml) {
     deviceHolder.height(floorImage.height());
     deviceHolder.width(floorImage.width());
 
-    if(!_devices.allFloorplanDevices)
+    if(!_devices.allFloorplanDevices || !currentFloor)
         return;
+
+
     _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
         var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
         var data = {homeyDevice, floorplanDevice};
         //console.log(`Add device ${homeyDevice.name} to configdevice viewer`);
+
+        if(homeyDevice.id == "9fbc5439-e4c9-42e8-b9f8-672eae730fbe") {
+            
+        }
         deviceHolder.append($("#SingleDeviceTemplate").render(data));
     });
 }

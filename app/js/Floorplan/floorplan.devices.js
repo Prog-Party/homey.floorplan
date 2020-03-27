@@ -38,8 +38,9 @@ class Floorplan_Devices {
 
            _devices._allHomeyDevices = array;
            _devices._allHomeyDevices.forEach(h => {
-               let isOn = h.capabilitiesObj && h.capabilitiesObj[h.ui.quickAction] && h.capabilitiesObj[h.ui.quickAction].value === true;
-               h.isOn = isOn;
+                let isOn = h.capabilitiesObj && h.capabilitiesObj[h.ui.quickAction] && h.capabilitiesObj[h.ui.quickAction].value === true;
+                h.isOn = isOn;
+                _homeyHelper.setTemperature(h);
            });
            _devices.renderAfterRetrieve();
            _devices.trackDeviceEvents();
@@ -49,19 +50,8 @@ class Floorplan_Devices {
     trackDeviceEvents() {
         console.log("Track device events");
         _devices._allHomeyDevices.forEach(function(device){
-            if(!device || !device.ui || !device.ui.quickAction)
-                return;
-
-            device.makeCapabilityInstance(device.ui.quickAction, function(value){
-                //_devices.turnDeviceOnOff(device.id, value);
-                console.log(`Device ${device.name} (${device.id}) is turned ${value == true ? "on" : "off"}`);
-                var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
-                device.isOn = value;
-                if(value)
-                    singleDevice.addClass("device-on");
-                else
-                    singleDevice.removeClass("device-on");
-            });
+            _homeyHelper.trackQuickAction(device);
+            _homeyHelper.trackTemperature(device);
           });
     }
 

@@ -25,6 +25,10 @@ class Floorplan_Floors {
             
             _floors._floorsAreInitialized = true;
             document.dispatchEvent(_floors.onFloorsRetrievedEvent);
+
+            if(_floors.allFloors.length > 0) {
+                _floors.activateFloor(_floors.allFloors[0].id);
+            }
         });
     }
 

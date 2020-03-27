@@ -68,7 +68,15 @@ body .row {
 
   #floorplan_View .single-device {
     cursor: pointer;
+    display: relative;
   }
+
+    #floorplan_View .single-device .capability.temperature {
+      position: absolute;
+      font-size: 11px;
+      top: -16px;
+      right: 0px;
+    }
 
     #floorplan_View .single-device.device-on {
       background-color: #ffe138;
@@ -180,14 +188,17 @@ body .row {
   display: block;
 }
 
-#configdevice_View .device-holder .single-device {
+#configdevice_View .single-device {
   opacity: 40%;
 }
+  #configdevice_View .single-device.active-device
+  {
+    opacity: 100%;
+  }
 
-.device-holder .active-device
-{
-  opacity: 100%;
-}
+  #configdevice_View .single-device .capability {
+    display: none;
+  }
 
  /********************/
  /** DE REST ***/
