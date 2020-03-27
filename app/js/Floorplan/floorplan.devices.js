@@ -41,6 +41,7 @@ class Floorplan_Devices {
                 let isOn = h.capabilitiesObj && h.capabilitiesObj[h.ui.quickAction] && h.capabilitiesObj[h.ui.quickAction].value === true;
                 h.isOn = isOn;
                 _homeyHelper.setTemperature(h);
+                _homeyHelper.setHumidity(h);
            });
            _devices.renderAfterRetrieve();
            _devices.trackDeviceEvents();
@@ -52,6 +53,7 @@ class Floorplan_Devices {
         _devices._allHomeyDevices.forEach(function(device){
             _homeyHelper.trackQuickAction(device);
             _homeyHelper.trackTemperature(device);
+            _homeyHelper.trackHumidity(device);
           });
     }
 

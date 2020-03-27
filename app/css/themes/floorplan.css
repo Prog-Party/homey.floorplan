@@ -71,11 +71,26 @@ body .row {
     display: relative;
   }
 
-    #floorplan_View .single-device .capability.temperature {
-      position: absolute;
+    #floorplan_View .single-device .capabilities {
       font-size: 11px;
-      top: -16px;
-      right: 0px;
+      margin-top: 100%;
+      margin-left: -16px;
+      width: 64px;
+      text-align: center;
+    }
+
+    #floorplan_View .single-device .capabilities .temperature .value {
+      background-image: url("/img/temperature.png");
+      background-repeat: no-repeat;
+      background-size: 13px 13px;
+      padding-left: 15px;
+    }
+
+    #floorplan_View .single-device .capabilities .humidity .value {
+      background-image: url("/img/humidity.png");
+      background-repeat: no-repeat;
+      background-size: 13px 13px;
+      padding-left: 15px;
     }
 
     #floorplan_View .single-device.device-on {
@@ -196,8 +211,8 @@ body .row {
     opacity: 100%;
   }
 
-  #configdevice_View .single-device .capability {
-    display: none;
+  #configdevice_View .single-device .capabilities {
+    display:none;
   }
 
  /********************/
