@@ -96,6 +96,10 @@ body .row {
     #floorplan_View .single-device.device-on {
       background-color: #ffe138;
     }
+
+    #floorplan_View .single-device.device-alarm-on {
+      background-color: #f0b851;
+    }
  /********************/
  /** CONFIG ***/
  /********************/

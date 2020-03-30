@@ -58,7 +58,7 @@
     </script>
     
     <script id="SingleDeviceTemplate" type="text/x-jsrender">
-      <div class='single-device {{if homeyDevice.isOn}}device-on{{/if}}' data-virtual-class='{{:homeyDevice.virtualClass}}' data-homey-class='{{:homeyDevice.class}}' data-device-id='{{:floorplanDevice.deviceId}}' style="background-image: url('https://icons-cdn.athom.com/{{:homeyDevice.iconObj.id}}-32.png'); left: {{:floorplanDevice.x}}%; top: {{:floorplanDevice.y}}%; width: 32px; height: 32px; position: absolute;">
+      <div class='single-device {{if homeyDevice.isOn}}device-on{{/if}} {{if homeyDevice.alarmIsOn}}device-alarm-on{{/if}}' data-virtual-class='{{:homeyDevice.virtualClass}}' data-homey-class='{{:homeyDevice.class}}' data-device-id='{{:floorplanDevice.deviceId}}' style="background-image: url('https://icons-cdn.athom.com/{{:homeyDevice.iconObj.id}}-32.png'); left: {{:floorplanDevice.x}}%; top: {{:floorplanDevice.y}}%; width: 32px; height: 32px; position: absolute;">
         <div class="capabilities">
         {{if homeyDevice.temperature}}
           <div class='capability temperature'>

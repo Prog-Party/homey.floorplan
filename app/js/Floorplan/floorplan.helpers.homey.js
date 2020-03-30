@@ -1,6 +1,26 @@
 class Helpers_Homey {
     constructor() {
     }
+    
+    initializeDevice(device) {
+        this.setQuickAction(device);
+        this.setTemperature(device);
+        this.setHumidity(device);
+        this.setAlarmIsOn(device);
+    }
+
+    trackDeviceEvent(device) {
+        this.trackQuickAction(device);
+        this.trackTemperature(device);
+        this.trackHumidity(device);
+        this.trackMotionAlarm(device);
+    }
+
+    setQuickAction(device) {
+        var quickAction = device.ui.quickAction;
+        let isOn = device.capabilitiesObj && device.capabilitiesObj[quickAction] && device.capabilitiesObj[quickAction].value === true;
+        device.isOn = isOn;
+    }
 
     setTemperature(device) {
         let capabilityName = "measure_temperature";
@@ -22,12 +42,21 @@ class Helpers_Homey {
         device.humidityUnits = capability.units;
     }
 
+    setAlarmIsOn(device) {
+        let capabilityName = "alarm_motion";
+        if(!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != "sensor")
+            return;
+            
+        let capability = device.capabilitiesObj[capabilityName];
+        device.alarmIsOn = capability.value;
+    }
+
     trackQuickAction(device) {
         if(!device || !device.ui || !device.ui.quickAction)
             return;
 
         device.makeCapabilityInstance(device.ui.quickAction, function(value){
-            console.log(`Device ${device.name} (${device.id}) is turned ${value == true ? "on" : "off"}`);
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) is turned ${value == true ? "on" : "off"}`);
             var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
             device.isOn = value;
             if(value)
@@ -43,7 +72,7 @@ class Helpers_Homey {
             return;
 
         device.makeCapabilityInstance(capabilityName, function(value){
-            console.log(`Device ${device.name} (${device.id}) temperature changed to ${value} ${device.temperatureUnits}`);
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) temperature changed to ${value} ${device.temperatureUnits}`);
             var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
             device.temperature = value;
             singleDevice.find(".capability.temperature .value").html(device.temperature);
@@ -56,12 +85,30 @@ class Helpers_Homey {
             return;
 
         device.makeCapabilityInstance(capabilityName, function(value){
-            console.log(`Device ${device.name} (${device.id}) humidity changed to ${value} ${device.humidityUnits}`);
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) humidity changed to ${value} ${device.humidityUnits}`);
             var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
             device.humidity = value;
             singleDevice.find(".capability.humidity .value").html(device.humidity);
         });
     }
+    
+    trackMotionAlarm(device) {
+        let capabilityName = "alarm_motion";
+        if(!device || device.alarmIsOn === undefined)
+            return;
+
+        device.makeCapabilityInstance(capabilityName, function(value){
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) alarm is turned ${value == true ? "on" : "off"}`);
+            var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
+            device.alarmIsOn = value;
+            if(value)
+                singleDevice.addClass("device-alarm-on");
+            else
+                singleDevice.removeClass("device-alarm-on");
+        });
+    }
+
+
 }
 
 var _homeyHelper = new Helpers_Homey();

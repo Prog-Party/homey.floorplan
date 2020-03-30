@@ -72,3 +72,17 @@ function removeLoader(loadid)
         $("#LoadOnSubmit").remove();
     }
 }
+
+function getDateTime() {
+    var currentDate = new Date();
+
+    var date = currentDate.getDate();
+    var month = currentDate.getMonth(); //Be careful! January is 0 not 1
+    var year = currentDate.getFullYear();
+
+    var hours = currentDate.getHours();
+    var minutes = currentDate.getMinutes();
+    var seconds = currentDate.getSeconds();
+    
+    return `${date}-${month + 1}-${year} ${hours}:${minutes}:${seconds}`;
+}
