@@ -54,7 +54,7 @@ function floorplan_renderDevices() {
     if(!_floors._activeFloor)
         return;
        
-    console.log("floorplan: render the devices on the screen.");
+    console.log(`${getDateTime()} - floorplan: render the devices on the screen.`);
 
     var currentFloorHtml = $("#floorplan_View .floor-with-devices.active");
     renderDevicesToFloorplan(currentFloorHtml);

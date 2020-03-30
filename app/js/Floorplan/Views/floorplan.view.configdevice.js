@@ -96,7 +96,7 @@ $(document).on("change", "#configdevice_Order", function() {
 });
 
 function configdevice_renderDeviceList() {
-    console.log("configdevice: Render the devices list");
+    console.log(`${getDateTime()} - configdevice: Render the devices list`);
 
     var deviceObjectList = [];
     _devices.allHomeyDevices.forEach(homeyDevice => {
@@ -129,7 +129,7 @@ function configdevice_renderDevices() {
     if(_floors.allFloors.length == 0)
        return; 
        
-    console.log("configdevice: Render the devices to the screen.");
+    console.log(`${getDateTime()} - configdevice: Render the devices to the screen.`);
     removeLoader("configdevice_UpdateDevice_Loader");
     removeLoader("configdevice_DeleteDevice_Loader");
 
@@ -142,7 +142,7 @@ function updateDeviceLocation() {
     if(_devices.activeHomeyDevice == null)
         return;
 
-    console.log("Device locatie is veranderd");
+    console.log(`${getDateTime()} - Device locatie is veranderd`);
     var homeyId = _devices.activeHomeyDevice.id;
     var sinlgeDevice = $(`#configdevice_View .single-device[data-device-id=${homeyId}]`);
 

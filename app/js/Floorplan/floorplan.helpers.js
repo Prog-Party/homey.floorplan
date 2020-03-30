@@ -1,5 +1,10 @@
 $(function() {
     initDataLoader();
+    
+    later.setInterval(function(){
+        //reload the page every hour
+        location.reload();
+    }, later.parse.text('every 1 hour'));
 });
 
 function sortByName(nameA, nameB) {
@@ -83,6 +88,6 @@ function getDateTime() {
     var hours = currentDate.getHours();
     var minutes = currentDate.getMinutes();
     var seconds = currentDate.getSeconds();
-    
+
     return `${date}-${month + 1}-${year} ${hours}:${minutes}:${seconds}`;
 }

@@ -54,7 +54,7 @@ class Floorplan_Floors {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Adding floor worked (${json})`);
+            console.log(`${getDateTime()} - Adding floor worked (${json})`);
             _floors.retrieveAllFloors();
         });
     }
@@ -69,7 +69,7 @@ class Floorplan_Floors {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Updating floor worked (${json})`);
+            console.log(`${getDateTime()} - Updating floor worked (${json})`);
             _floors.retrieveAllFloors();
         });
     }
@@ -81,7 +81,7 @@ class Floorplan_Floors {
         
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Removing floor worked (${json})`);
+            console.log(`${getDateTime()} - Removing floor worked (${json})`);
             _floors.retrieveAllFloors();
         });
     }

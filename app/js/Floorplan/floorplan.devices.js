@@ -6,6 +6,10 @@ document.addEventListener('onHomeyLoaded', function (obj) {
     _devices.initializeHomey(obj.detail);
 });
 
+document.addEventListener('onDevicesLoaded', function (obj) {
+    _devices.renderDevices(obj.detail);
+});
+
 class Floorplan_Devices {
     constructor() {
         this.onActivateDeviceEvent = new Event('onActivateDevice');
@@ -28,25 +32,27 @@ class Floorplan_Devices {
     }
 
     initializeHomey(homey){
+        console.log(`${getDateTime()} - Initialize Homey`);
         this._homey = homey;
-        
-        this._homey.devices.getDevices().then(function(devices) {
-            let array = [];
-            for (let key in devices) {
-                array.push(devices[key]);  // convert devices dict to list
-            }
+    }
 
-           _devices._allHomeyDevices = array;
-           _devices._allHomeyDevices.forEach(h => {
-                _homeyHelper.initializeDevice(h);
-           });
-           _devices.renderAfterRetrieve();
-           _devices.trackDeviceEvents();
+    renderDevices(devices) {
+        console.log(`${getDateTime()} - Render devices`);
+        let array = [];
+        for (let key in devices) {
+            array.push(devices[key]);  // convert devices dict to list
+        }
+
+        _devices._allHomeyDevices = array;
+        _devices._allHomeyDevices.forEach(h => {
+            _homeyHelper.initializeDevice(h);
         });
+        _devices.renderAfterRetrieve();
+        _devices.trackDeviceEvents();
     }
 
     trackDeviceEvents() {
-        console.log("Track device events");
+        console.log(`${getDateTime()} - Track device events`);
         _devices._allHomeyDevices.forEach(function(device){
             _homeyHelper.trackDeviceEvent(device);
           });
@@ -81,7 +87,7 @@ class Floorplan_Devices {
          url += "&token=" + getToken();
 
         $.get(url, function(json) {
-             console.log("Devices are retrieved");
+            console.log(`${getDateTime()} - Devices are retrieved`);
              _devices._allFloorplanDevices = JSON.parse(json);
              _devices.renderAfterRetrieve();
         });
@@ -94,7 +100,7 @@ class Floorplan_Devices {
             document.dispatchEvent(this.onDevicesRetrievedEvent);
         }
         else
-            console.log("Rendering not possible yet");
+            console.log(`${getDateTime()} - Rendering not possible yet`);
     }
 
     addDevice(deviceId, x, y, floorId) {
@@ -107,7 +113,7 @@ class Floorplan_Devices {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Adding floorplan device worked (${json})`);
+            console.log(`${getDateTime()} - Adding floorplan device worked (${json})`);
             _devices.retrieveAllFloorplanDevices();
         });
     }
@@ -122,7 +128,7 @@ class Floorplan_Devices {
 
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Updating floorplan device worked (${json})`);
+            console.log(`${getDateTime()} - Updating floorplan device worked (${json})`);
             _devices.retrieveAllFloorplanDevices();
         });
     }
@@ -134,7 +140,7 @@ class Floorplan_Devices {
         
         console.log(url);
         $.get(url, function(json) {
-            console.log(`Removing floorplan device worked (${json})`);
+            console.log(`${getDateTime()} - Removing floorplan device worked (${json})`);
             document.dispatchEvent(_devices.onDeviceDeletedEvent);
             _devices.retrieveAllFloorplanDevices();
         });
