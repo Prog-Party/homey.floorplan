@@ -140,10 +140,10 @@
     </div>
 
     <div id="configfloor_View">
-      <div id="configfloor_Form">
-        <div><input type="text" id="configfloor_name" placeholder="name" value="floor name" autofocus></input></div>
-        <div><input type="text" id="configfloor_order" placeholder="order" value="floor order"></input ></div>
-        <div><input type="text" id="configfloor_image" placeholder="image link" value="floor plan image"></input></div>
+      <div id="configfloor_Form" class="input-group mb-3">
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_name" placeholder="name" value="floor name" autofocus></input></div>
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_order" placeholder="order" value="floor order"></input ></div>
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_image" placeholder="image link" value="floor plan image"></input></div>
         <div><img id="configfloor_image_plot" height="100" width="100"></div>
 
         <div id="configfloor_buttons">
@@ -153,6 +153,7 @@
         </div>
       </div>
       <div id="configfloor_FloorOverview">
+        <h2>Floor overview</h2>
       </div>
     </div>
 
@@ -186,7 +187,7 @@
           </div>
           <div class="col-3" style="overflow: auto;">
               <h2>Device List Homey</h2>
-              <select id="configdevice_Order">
+              <select id="configdevice_Order" class="btn btn-secondary dropdown-toggle">
                 <option value="name">Op naam</option>
                 <option value="type">Op merk</option>
                 <option value="isadded" selected="selected">Is toegevoegd</option>
