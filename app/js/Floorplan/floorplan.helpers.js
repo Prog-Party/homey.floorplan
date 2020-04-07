@@ -24,6 +24,7 @@ function getToken() {
 }
 
 function renderDevicesToFloorplan(currentFloorHtml) {
+    console.log("Try render the devices to the floorplan");
     var deviceHolder = $(currentFloorHtml).find(".device-holder");
     
     //get the height and width of the img
@@ -34,18 +35,16 @@ function renderDevicesToFloorplan(currentFloorHtml) {
     deviceHolder.height(floorImage.height());
     deviceHolder.width(floorImage.width());
 
-    if(!_devices.allFloorplanDevices || !currentFloor)
+    if(!_devices.allFloorplanDevices || !currentFloor || !_devices._devicesAreInitialized)
         return;
 
 
     _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
         var homeyDevice = _devices.getHomeyDevice(floorplanDevice);
+        if(homeyDevice == null)
+            return;
+        
         var data = {homeyDevice, floorplanDevice};
-        //console.log(`Add device ${homeyDevice.name} to configdevice viewer`);
-
-        if(homeyDevice.id == "9fbc5439-e4c9-42e8-b9f8-672eae730fbe") {
-            
-        }
         deviceHolder.append($("#SingleDeviceTemplate").render(data));
     });
 }
