@@ -82,7 +82,7 @@ window.addEventListener('load', function() {
       }).catch(console.error);
       
       homey.devices.getDevices().then(function(devices) {
-        var onDevicesLoadedEvent = new CustomEvent('onDevicesLoaded', {'detail': devices})
+        var onDevicesLoadedEvent = new CustomEvent('onDevicesLoaded', {'detail': devices});
         document.dispatchEvent(onDevicesLoadedEvent);
 
         var favoriteDevices = me.properties.favoriteDevices.map(function(deviceId){

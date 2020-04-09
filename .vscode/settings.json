@@ -1,8 +1,0 @@
-{
-    "appService.zipIgnorePattern": [
-        "node_modules{,/**}",
-        ".vscode{,/**}"
-    ],
-    "appService.defaultWebAppToDeploy": "/subscriptions/8e408ffc-0518-45d7-9228-e7b826e577ee/resourceGroups/ProgParty-Homey-Floorplan/providers/Microsoft.Web/sites/homeyfloorplan",
-    "appService.deploySubpath": "app"
-}
