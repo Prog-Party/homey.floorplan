@@ -7,6 +7,7 @@ class Helpers_Homey {
         this.setTemperature(device);
         this.setHumidity(device);
         this.setAlarmIsOn(device);
+        this.setAlarmOpenClose(device);
     }
 
     trackDeviceEvent(device) {
@@ -14,6 +15,7 @@ class Helpers_Homey {
         this.trackTemperature(device);
         this.trackHumidity(device);
         this.trackMotionAlarm(device);
+        this.trackMotionAlarmOpenClose(device);
     }
 
     setQuickAction(device) {
@@ -49,6 +51,15 @@ class Helpers_Homey {
             
         let capability = device.capabilitiesObj[capabilityName];
         device.alarmIsOn = capability.value;
+    }
+    
+    setAlarmOpenClose(device) {
+        let capabilityName = "alarm_contact";
+        if(!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != "sensor")
+            return;
+            
+        let capability = device.capabilitiesObj[capabilityName];
+        device.alarmOpenCloseIsOn = capability.value;
     }
 
     trackQuickAction(device) {
@@ -108,7 +119,21 @@ class Helpers_Homey {
         });
     }
 
+    trackMotionAlarmOpenClose(device) {
+        let capabilityName = "alarm_contact";
+        if(!device || device.alarmOpenCloseIsOn === undefined)
+            return;
 
+        device.makeCapabilityInstance(capabilityName, function(value){
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) open close alarm is turned ${value == true ? "on" : "off"}`);
+            var singleDevice = $(`div.single-device[data-device-id='${device.id}']`);
+            device.alarmOpenCloseIsOn = value;
+            if(value)
+                singleDevice.addClass("device-alarm-on");
+            else
+                singleDevice.removeClass("device-alarm-on");
+        });
+    }
 }
 
 var _homeyHelper = new Helpers_Homey();
