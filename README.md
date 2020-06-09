@@ -1,10 +1,8 @@
 # Homey.floorplan
 
-Homey.ink is an open-source project for wall-mounted Homey dashboards.
+Homey.floorplan is an open-source project for wall-mounted Homey dashboards.
 
-![](https://homey.ink/img/hero-device.png)
-
-While initially created for e-ink readers, due to their low-power consumption, there is no reason why other tablets won't work.
+![](http://www.deresen.nl/jensdennis/homeyfloorplan/tablet.png)
 
 ## Theming
 
