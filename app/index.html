@@ -39,6 +39,8 @@
     <script type="text/javascript" src="./js/Floorplan/Views/floorplan.view.configdevice.js"></script>
     <script type="text/javascript" src="./js/Floorplan/Views/floorplan.view.configfloor.js"></script>
     <script type="text/javascript" src="./js/Floorplan/Views/floorplan.view.floorplan.js"></script>
+
+    <script type="text/javascript" src="https://blockchain.info/Resources/js/pay-now-button.js"></script>
   </head>
   <body>
     <script id="floorplan_CarouselItemTemplate" type="text/x-jsrender">
@@ -52,9 +54,13 @@
     </script>
     
     <script id="floorplan_DefaultCarouselTemplate" type="text/x-jsrender">
-      <div class="carousel" data-ride="carousel"> 
+      <div class="carousel slide" data-ride="carousel"> 
         <div class="carousel-inner"></div>
       </div>
+    </script>
+    
+    <script id="floorplan_FloorSwitcherMenuButtonTemplate" type="text/x-jsrender">
+      <a class='floor-button navbar-brand align-items-center' data-floor-id='{{:id}}' href='#'>{{:name}}</a>
     </script>
     
     <script id="SingleDeviceTemplate" type="text/x-jsrender">
@@ -127,54 +133,131 @@
       </div>
     </div>
 
+    <div class="navbar navbar-dark bg-dark box-shadow">
+      <div class="container d-flex justify-content-between">
+        
+        <div id="floorplan_FloorSwitcherMenu"></div>
+  
+        <button class="navbar-configuration" type="button" onclick="_viewswitcher.switchToView('config_View')" title="Configuration">
+          <span class="navbar-configuration-icon">&#x2699;</span>
+        </button>
+      </div>
+    </div>
+
     <div id="floorplan_View">
       <div id="floorplan_CarouselHolder">
         <img src="img/loader.gif" />
       </div>
-      <div id="floorplan_FloorSwitcherMenu"></div>
     </div>
 
-    <div id="config_View">
-      <div id="config_Canvas">
-      </div>
-    </div>
+    <div id="config_View" class="configuration">
+      <div class="row">
+        <div class="col-6">    
+          <h1>Who are we?</h1>
+          <p>We are Jens and Dennis, two prog-nerds from The Netherlands. We have these Pr0gParty's regularly where we create stuff. Just for fun, or to make money, or to have something usefull for our beloving girlfriends.</p>
+          
+          <h2>Thank you</h2>
+          <p>We really appreciate that you are using the Homey Floorplan. Why? Because we have created this for ourselves and are really happy that we can make you happy.</p>
+          <p>To show you our happiness, here you see a picture of us creating this awesome interface on one of our famous ProgParty's:</p>
+          <p><img src="http://deresen.nl/ProgParty/foto_jens_dennis8.jpeg" style="width: 400px;" alt="Jens & Dennis" title="Jens & Dennis" /></p>
+        </div>
+        <div class="col-6">
+          <h2>Donate</h2>
+          <p>If you like, you can support us. Make us even more happy.</p>
+          <h3>PayPal</h3>
+          <p>Click on this button to donate with PayPal.</p>
+          <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
 
-    <div id="configfloor_View">
-      <div id="configfloor_Form" class="input-group mb-3">
-        <h1>Configure the floors</h1>
-        <p>In order to show off your Homey configuration on a nice floorplan, you need to configure your floors. Add as many floors as you like. You must provide an image to each floor, this image will be used to show your devices.</p>
-
-        <label for="configfloor_name">
-          <b>Name of your floor</b>
-          <br />You can give your floor a name. This way you can identify your floor quickly.
-        </label>
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_name" placeholder="Name of the floor" autofocus></input></div>
+            <!-- Identify your business so that you can collect the payments. -->
+            <input type="hidden" name="business" value="deresen@hotmail.com">
         
-        <label for="configfloor_order">
-          <b>Floor order</b>
-          <br />You can sort your floors by assigning an order number.
-        </label>
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_order" placeholder="Order number" ></input ></div>
+            <!-- Specify a Donate button. -->
+            <input type="hidden" name="cmd" value="_donations">
         
-        <label for="configfloor_image">
-          <b>Floor image url</b>
-          <br />Please provide a valid url to an image. This is the image that is shown as your floor. If you don't have a clue, please use this one to start with: <u>http://www.deresen.nl/ProgParty/Sample-floor.png</u>
-        </label>
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_image" placeholder="Floor image"></input></div>
-        <div><img id="configfloor_image_plot" height="100"></div>
+            <!-- Specify details about the contribution -->
+            <input type="hidden" name="item_name" value="Homey Floorplan">
+            <input type="hidden" name="item_number" value="Thank you for your support!">
+            <input type="hidden" name="currency_code" value="EUR">
+        
+            <!-- Display the payment button. -->
+            <input type="image" name="submit"
+            src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
+            alt="Donate">
+            <img alt="" width="1" height="1"
+            src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+        
+            </form>
 
-        <div id="configfloor_buttons">
-          <div><a href="#" class="btn btn-success" data-loader="configfloor_AddFloorLoader" id="configfloor_AddFloor">Add Floor</a></div>
-          <div><a href="#" class="btn btn-primary" data-loader="configfloor_UpdateFloorLoader" id="configfloor_UpdateFloor">Update Floor</a></div>
-          <div><a href="#" class="btn btn-danger" data-loader="configfloor_DeleteFloorLoader" id="configfloor_DeleteFloor">Delete Floor</a></div>
+            <h3>Bitcoin</h3>
+            <p>Click on this button to donate with Bitcoin.</p>
+            <div style="font-size:16px;margin:0 auto;width:300px" class="blockchain-btn"
+                data-address="15eSARzRSThQVrncEXD8rpWMNjHsVCpEPm"
+                data-shared="false">
+              <div class="blockchain stage-begin">
+                  <img src="https://blockchain.info/Resources/buttons/donate_64.png"/>
+              </div>
+              <div class="blockchain stage-loading" style="text-align:center">
+                  <img src="https://blockchain.info/Resources/loading-large.gif"/>
+              </div>
+              <div class="blockchain stage-ready">
+                    <p align="center">Please Donate To Bitcoin Address: <b>[[address]]</b></p>
+                    <p align="center" class="qr-code"></p>
+              </div>
+              <div class="blockchain stage-paid">
+                    Donation of <b>[[value]] BTC</b> Received. Thank You.
+              </div>
+              <div class="blockchain stage-error">
+                  <font color="red">[[error]]</font>
+              </div>
+            </div>
+
+            <h3>Etherium</h3>
+            <p>Click on this button to donate with Etherium.</p>
+            <a href="https://etherdonation.com/d?to=0x95EE3b74C70552F195d1519B02Dc1A653B979A82&amount=0.01337" target="_blank" title="Donate ETH"><img src="https://etherdonation.com/i/btn/donate-btn.png" alt="Donate ETH"/></a>
         </div>
       </div>
-      <div id="configfloor_FloorOverview">
-        <h2>Floor overview</h2>
+    </div>
+
+    <div id="configfloor_View" class="configuration">
+      <div id="configfloor_Form" class="input-group mb-3">
+        
+        <div class="row">
+          <div class="col-9">
+            <h1>Configure the floors</h1>
+            <p>In order to show off your Homey configuration on a nice floorplan, you need to configure your floors. Add as many floors as you like. You must provide an image to each floor, this image will be used to show your devices.</p>
+
+            <label for="configfloor_name">
+              <b>Name of your floor</b>
+              <br />You can give your floor a name. This way you can identify your floor quickly.
+            </label>
+            <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_name" placeholder="Name of the floor" autofocus></input></div>
+            
+            <label for="configfloor_order">
+              <b>Floor order</b>
+              <br />You can sort your floors by assigning an order number.
+            </label>
+            <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_order" placeholder="Order number" ></input ></div>
+            
+            <label for="configfloor_image">
+              <b>Floor image url</b>
+              <br />Please provide a valid url to an image. This is the image that is shown as your floor. If you don't have a clue, please use this one to start with: <u>http://www.deresen.nl/ProgParty/Sample-floor.png</u>
+            </label>
+            <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_image" placeholder="Floor image"></input></div>
+          </div>
+          <div class="col-3">
+            <div><img id="configfloor_image_plot" height="100"></div>
+
+            <div id="configfloor_buttons">
+              <div><a href="#" class="btn btn-success" data-loader="configfloor_AddFloorLoader" id="configfloor_AddFloor">Add Floor</a></div>
+              <div><a href="#" class="btn btn-primary" data-loader="configfloor_UpdateFloorLoader" id="configfloor_UpdateFloor">Update Floor</a></div>
+              <div><a href="#" class="btn btn-danger" data-loader="configfloor_DeleteFloorLoader" id="configfloor_DeleteFloor">Delete Floor</a></div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div id="configdevice_View">
+    <div id="configdevice_View" class="configuration">
         <div class="row">
           <div class="col-6 floor-with-devices">
             <img id="configdevice_Floor" src="img/loader.gif" />
@@ -213,12 +296,6 @@
               Homey devices worden opgehaald...
               <br /><img src="img/loader.gif" class="w64" />
             </div>
-            <h2>Verdiepingen</h2>
-            <nav id="configdevice_FloorSwitcherMenu" class="nav nav-pills flex-column">
-              Verdiepingen worden ingeladen...
-              <br />
-              <img src="img/loader.gif" class="w64" />
-            </nav>
           </div>
         </div>
       </div>
@@ -226,10 +303,10 @@
 
     <div id="ViewSwitcherMenu">
         <ul class="nav nav-pills flex-column">
-          <li class="nav-item"><a id="floorplan_Button" href="#">Viewer</a></li>
-          <li class="nav-item"><a id="config_Button" href="#">Configuration</a></li>
-          <li class="nav-item"><a id="configfloor_Button" href="#">Floor config</a></li>
-          <li class="nav-item"><a id="configdevice_Button" href="#">Device config</a></li>
+          <li class="nav-item"><a id="floorplan_Button" class="btn btn-primary" href="#">View floorplan</a></li>
+          <li class="nav-item"><a id="config_Button" class="btn btn-primary" href="#">Configuration</a></li>
+          <li class="nav-item"><a id="configfloor_Button" class="btn btn-primary" href="#">Floor config</a></li>
+          <li class="nav-item"><a id="configdevice_Button" class="btn btn-primary" href="#">Device config</a></li>
         </ul>
       </div>
   </body>

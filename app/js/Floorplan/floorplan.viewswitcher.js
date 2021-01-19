@@ -8,10 +8,10 @@ class Floorplan_Viewswitcher {
         this.onViewChangedEvent = new Event('onViewChanged');
         
         this.views = [ 
-            { id: 1, viewId: "floorplan_View", buttonId: "floorplan_Button", buttonsToShow: [2] },
+            { id: 1, viewId: "floorplan_View", buttonId: "floorplan_Button", buttonsToShow: [] },
             { id: 2, viewId: "config_View", buttonId: "config_Button", buttonsToShow: [1, 3, 4] },
-            { id: 3, viewId: "configfloor_View", buttonId: "configfloor_Button", buttonsToShow: [2] },
-            { id: 4, viewId: "configdevice_View", buttonId: "configdevice_Button", buttonsToShow: [2] }
+            { id: 3, viewId: "configfloor_View", buttonId: "configfloor_Button", buttonsToShow: [1, 3, 4] },
+            { id: 4, viewId: "configdevice_View", buttonId: "configdevice_Button", buttonsToShow: [1, 3, 4] }
         ];
     }
 
@@ -53,10 +53,10 @@ class Floorplan_Viewswitcher {
         $("#" + viewId).show();
 
         //hide all the buttons
-        allViews.forEach(v => $("#" + v.buttonId).hide());
+        allViews.forEach(v => $("#" + v.buttonId).parent().hide());
 
         //show the buttons that belong to the current view
-        view.buttonsToShow.forEach(id => $("#" + allViews.filter(v => v.id == id)[0].buttonId).show());        
+        view.buttonsToShow.forEach(id => $("#" + allViews.filter(v => v.id == id)[0].buttonId).parent().show());        
     }
 }
 

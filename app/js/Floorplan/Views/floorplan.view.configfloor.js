@@ -11,17 +11,9 @@ document.addEventListener('onActivateFloor', function (e) {
  });
 
 document.addEventListener('onFloorsRetrieved', function (e) { 
-    var floorSwitcherMenu = $("#configfloor_FloorOverview");
-    floorSwitcherMenu.html("");
-
     removeLoader("configfloor_AddFloorLoader");
     removeLoader("configfloor_UpdateFloorLoader");
     removeLoader("configfloor_DeleteFloorLoader");
-
-    _floors.allFloors.forEach(floor => {
-        var button = `<div><a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a><span> > ${floor.order}</span></div>`;
-        floorSwitcherMenu.append(button);
-    });
 
     if(_floors.allFloors.length == 0) {
         $("#configfloor_UpdateFloor").hide();

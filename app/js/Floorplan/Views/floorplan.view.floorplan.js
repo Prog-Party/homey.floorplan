@@ -15,21 +15,24 @@ window.addEventListener("resize", floorplan_renderDevices);
 document.addEventListener('onDevicesRetrieved', floorplan_renderDevices);
 
 document.addEventListener('onActivateFloor', function (e) { 
+    console.log(`${getDateTime()} - floorplan: Floor activated, show on view.floorplan`);
     $(`#floorplan_CarouselHolder .carousel-item`).removeClass("active");
     $(`#floorplan_CarouselHolder .carousel-item[data-floor-id=${_floors.activeFloor.id}]`).addClass("active");
+    $(`#floorplan_FloorSwitcherMenu .floor-button`).removeClass("active");
+    $(`#floorplan_FloorSwitcherMenu .floor-button[data-floor-id=${_floors.activeFloor.id}]`).addClass("active");
 
     floorplan_renderDevices();
  }, false);
 
 document.addEventListener('onFloorsRetrieved', function (e) { 
+    console.log(`${getDateTime()} - floorplan:Floors retrieved`);
     var floorSwitcherMenu = $("#floorplan_FloorSwitcherMenu");
     floorSwitcherMenu.html("");
     $("#floorplan_CarouselHolder").html($("#floorplan_DefaultCarouselTemplate").render());
 
     _floors.allFloors.forEach(floor => {
-        // Toevoegen van de knoppen
-        var button = `<a class='floor-button' data-floor-id='${floor.id}' href='#'>${floor.name}</a>`;
-        floorSwitcherMenu.append(button);
+        // Voeg de knoppen toe
+        floorSwitcherMenu.append($("#floorplan_FloorSwitcherMenuButtonTemplate").render(floor));
 
         // Opbouwen van de carousel
         $("#floorplan_CarouselHolder .carousel-inner").append($("#floorplan_CarouselItemTemplate").render(floor));

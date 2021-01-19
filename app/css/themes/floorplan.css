@@ -28,9 +28,57 @@ body .row {
  {
    overflow: hidden;
    max-width:100%;
-   max-height: 100%;
-   height: 100%;
+   max-height: calc(100% - 50px);/* top menu = 50 px */
+   height: calc(100% - 50px);/* top menu = 50 px */
  }
+ 
+*[id$='_View'].configuration {
+  width: calc(100% - 200px); /* side menu = 200px */
+  max-width: calc(100% - 200px); /* side menu = 200px */
+  margin-left: 200px;
+}
+
+ /********************/
+ /** NAVIGATION BAR ***/
+ /********************/
+.navbar {
+  line-height: 1;
+}
+
+.navbar #floorplan_FloorSwitcherMenu .floor-button {
+  padding-right: 15px;
+  padding-left: 15px;
+  color:  rgba(255,255,255,.8);
+}
+
+.navbar #floorplan_FloorSwitcherMenu .floor-button.active {
+  border-bottom: 3px solid rgba(255,255,255,.8);
+}
+.navbar #floorplan_FloorSwitcherMenu .floor-button:hover {
+  color:  rgba(255,255,255,.4);
+  border-bottom: 3px solid rgba(255,255,255,.4);
+}
+
+.navbar .navbar-configuration {
+  padding: .25rem .75rem;
+  font-size: 1.5em;
+  line-height: 1;
+  background-color: transparent;
+  border: 1px solid rgba(255,255,255,.8);
+  border-radius: .25rem;
+}
+.navbar .navbar-configuration .navbar-configuration-icon {
+  color: rgba(255,255,255,.8);
+}
+
+.navbar .navbar-configuration:hover {
+  border-color: rgba(255,255,255,1);
+}
+.navbar .navbar-configuration:hover .navbar-configuration-icon {
+  color: rgba(255,255,255,1);
+}
+
+
 
  /********************/
  /** FLOORPLAN ***/
@@ -55,16 +103,6 @@ body .row {
     max-width: 100%;
     max-height: 100%;
   }
-
-    #floorplan_View #floorplan_FloorSwitcherMenu {
-      position: absolute;
-      top: 0;
-      right: 0;
-    }
-
-      #floorplan_View #floorplan_FloorSwitcherMenu > a {
-        display: block;
-      }
 
   #floorplan_View .single-device {
     cursor: pointer;
@@ -112,24 +150,9 @@ body .row {
   width: 75%;
 }
 
-#config_Canvas {
-  background-repeat: no-repeat;
-  height: 100%;
-  max-width: 100%;
-  background-size: contain;
-}
-
  /********************/
  /** CONFIGFLOOR ***/
  /********************/
-
-#configfloor_View {
-  height: 100%; 
-  width: 75%;
-  margin: auto;
-  display: flex;
-  flex-direction: row;
-}
 
 #configfloor_Form {
   display: flex;
@@ -159,11 +182,6 @@ body .row {
  /********************/
  /** CONFIGDEVICE ***/
  /********************/
-
-#configdevice_View {
-  height: 100%; 
-  width: 100%;
-}
 
 #configdevice_View > .row,
 #configdevice_View .row > * {
@@ -225,12 +243,16 @@ body .row {
 
 #ViewSwitcherMenu {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 60px;
+  left: 10px;
 }
 
-  #ViewSwitcherMenu a {
-    color: green;
+  #ViewSwitcherMenu li {
+    margin-bottom: 10px;
+  }
+  
+  #ViewSwitcherMenu li a {
+    min-width: 150px;
   }
 
   #ViewSwitcherMenu ul,
