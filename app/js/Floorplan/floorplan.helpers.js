@@ -1,7 +1,12 @@
 $(function() {
+
+    if(!hasToken()) {
+        $("#floorplan_View").html($("#floorplan_TokenMissingTemplate").render());
+    }
+
     initDataLoader();
     
-    var is_dark_mode = isDarkMode()
+    let is_dark_mode = isDarkMode()
     if(is_dark_mode) {
         $("html").attr("theme", "dark-mode")
     }
@@ -29,6 +34,12 @@ function getToken() {
     var urlParams = new URLSearchParams(window.location.search);
     var token = urlParams.get("token");
     return token;
+}
+
+function hasToken() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var token = urlParams.get("token");
+    return token.length != 0;
 }
 
 function isDarkMode() {

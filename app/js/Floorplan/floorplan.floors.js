@@ -16,6 +16,12 @@ class Floorplan_Floors {
     }
 
     retrieveAllFloors() {
+
+        if(!hasToken()) {
+            console.error("No Homey token found.");
+            return;
+        }
+
         var url = "https://progparty-homey-floorplan.azurewebsites.net/api/GetAllFloors?code=sl30LU/RJhGWyaUj1zQKrXARPTGEyW/aZCuFRP6mR41GL7G7x0ihlA==";
         url += "&token=" + getToken();
 
