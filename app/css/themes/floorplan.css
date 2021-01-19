@@ -290,3 +290,9 @@ body .row {
   width: 16px; 
   height: 16px;
 }
+
+/************ DarkMode *********/
+
+html[theme='dark-mode'] {
+  filter: invert(1) hue-rotate(180deg);
+}

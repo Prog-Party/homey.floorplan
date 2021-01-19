@@ -1,6 +1,14 @@
 $(function() {
     initDataLoader();
     
+    var is_dark_mode = isDarkMode()
+    if(is_dark_mode) {
+        $("html").attr("theme", "dark-mode")
+    }
+    else if(!is_dark_mode || is_dark_mode == undefined) {
+        $("html").removeAttr("theme")
+    }
+    
     later.setInterval(function(){
         //reload the page every hour
         location.reload();
@@ -21,6 +29,12 @@ function getToken() {
     var urlParams = new URLSearchParams(window.location.search);
     var token = urlParams.get("token");
     return token;
+}
+
+function isDarkMode() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var isDarkMode = urlParams.get("darkmode");
+    return isDarkMode;
 }
 
 function renderDevicesToFloorplan(currentFloorHtml) {
