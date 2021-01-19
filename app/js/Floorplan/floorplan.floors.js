@@ -46,6 +46,15 @@ class Floorplan_Floors {
     }
 
     addFloor(name, order, image) {
+        if(!name) {
+            name = "Floor x";
+        }
+        if(!order) {
+            order = "1";
+        }
+        if (!image) {
+            image = "http://www.deresen.nl/ProgParty/Sample-floor.png";
+        }
         var url = "https://progparty-homey-floorplan.azurewebsites.net/api/AddFloor?code=DZOZHKHYawTcGf/o19ZVi5CAmeciz747E2lWLHmEqQa3PHf1RJHQiQ==";
         url += "&token=" + getToken();
         url += "&order=" + order;

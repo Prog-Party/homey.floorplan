@@ -38,7 +38,7 @@ document.addEventListener('onFloorsRetrieved', function (e) {
     $('#floorplan_CarouselHolder .carousel').carousel({interval: 0});
     
     if(_floors.allFloors.length == 0) {
-        $("#floorplan_View").html("<div class='alert alert-warning' style='margin-left:25%;margin-right:25%'>LET OP: configureer de vloeren.</div>");
+        $("#floorplan_View").html("<div class='alert alert-warning' style='margin-left:25%;margin-right:25%'>Please note: configure the floors. <a href='javascript:_viewswitcher.switchToView(\"configfloor_View\")'>Click here to configure the floors.</a></div>");
     }
 
     floorplan_renderDevices();

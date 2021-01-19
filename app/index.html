@@ -141,9 +141,26 @@
 
     <div id="configfloor_View">
       <div id="configfloor_Form" class="input-group mb-3">
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_name" placeholder="name" value="floor name" autofocus></input></div>
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_order" placeholder="order" value="floor order"></input ></div>
-        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_image" placeholder="image link" value="floor plan image"></input></div>
+        <h1>Configure the floors</h1>
+        <p>In order to show off your Homey configuration on a nice floorplan, you need to configure your floors. Add as many floors as you like. You must provide an image to each floor, this image will be used to show your devices.</p>
+
+        <label for="configfloor_name">
+          <b>Name of your floor</b>
+          <br />You can give your floor a name. This way you can identify your floor quickly.
+        </label>
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_name" placeholder="Name of the floor" autofocus></input></div>
+        
+        <label for="configfloor_order">
+          <b>Floor order</b>
+          <br />You can sort your floors by assigning an order number.
+        </label>
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_order" placeholder="Order number" ></input ></div>
+        
+        <label for="configfloor_image">
+          <b>Floor image url</b>
+          <br />Please provide a valid url to an image. This is the image that is shown as your floor. If you don't have a clue, please use this one to start with: <u>http://www.deresen.nl/ProgParty/Sample-floor.png</u>
+        </label>
+        <div class="input-group mb-3"><input type="text" class="form-control" id="configfloor_image" placeholder="Floor image"></input></div>
         <div><img id="configfloor_image_plot" height="100"></div>
 
         <div id="configfloor_buttons">

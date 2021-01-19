@@ -109,7 +109,7 @@ body .row {
   width: 100%;
   height: 100%;
   margin: auto;
-  width: 50%;
+  width: 75%;
 }
 
 #config_Canvas {
@@ -125,7 +125,7 @@ body .row {
 
 #configfloor_View {
   height: 100%; 
-  width: 50%;
+  width: 75%;
   margin: auto;
   display: flex;
   flex-direction: row;
