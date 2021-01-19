@@ -66,7 +66,7 @@ body .row {
         display: block;
       }
 
-  #floorplan_View .single-device {
+  #floorplan_View .single-device:not([data-homey-class=sensor]) {
     cursor: pointer;
     display: relative;
   }
@@ -100,6 +100,8 @@ body .row {
     #floorplan_View .single-device.device-alarm-on {
       background-color: #f0b851;
     }
+
+ */
  /********************/
  /** CONFIG ***/
  /********************/
