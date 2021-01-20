@@ -58,6 +58,28 @@
         <div class="carousel-inner"></div>
       </div>
     </script>
+
+    <script id="floorplan_TokenMissingTemplate" type="text/x-jsrender">
+      <div class='alert alert-warning' style='margin-left:25%;margin-right:25%'>
+        Please note: no token is given for Homey.
+        <div style=margin-top:20px;>
+          Your token can be acquired by the following steps:
+          <ol>
+            <li>Visit <a href="https://homey.ink" target=_blank>https://homey.ink</a></li>
+            <li>Click on 'Login' to Log in with your Athom account.</li>
+            <li>Open the browsers developer tools with F12</li> 
+            <li>Click open the 'Console' tab</li>
+            <li>Click on the output: 'Web URL: https://app.homey.ink/?theme=web&token=<YOUR TOKEN>'</li>
+            <li>Copy the token from the address bar.</li> 
+          </ol>
+        </div>
+        <div>
+          https://homeyfloorplan.azurewebsites.net/?theme=floorplan&token=
+          <input type='text' id='TokenField' placeholder='your token'/>
+          <a href="javascript:window.location.href='http://homeyflooprlan.azurewebsites.nl?token=' + $('#TokenField').val();" class="btn btn-primary">Visit your floorplan</a>
+        </div>
+      </div>
+    </script>
     
     <script id="floorplan_FloorSwitcherMenuButtonTemplate" type="text/x-jsrender">
       <a class='floor-button navbar-brand align-items-center' data-floor-id='{{:id}}' href='#'>{{:name}}</a>

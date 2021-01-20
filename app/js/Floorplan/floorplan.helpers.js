@@ -1,5 +1,18 @@
 $(function() {
+
+    if(!hasToken()) {
+        $("#floorplan_View").html($("#floorplan_TokenMissingTemplate").render());
+    }
+
     initDataLoader();
+    
+    let is_dark_mode = isDarkMode()
+    if(is_dark_mode) {
+        $("html").attr("theme", "dark-mode")
+    }
+    else if(!is_dark_mode || is_dark_mode == undefined) {
+        $("html").removeAttr("theme")
+    }
     
     later.setInterval(function(){
         //reload the page every hour
@@ -21,6 +34,18 @@ function getToken() {
     var urlParams = new URLSearchParams(window.location.search);
     var token = urlParams.get("token");
     return token;
+}
+
+function hasToken() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var token = urlParams.get("token");
+    return token.length != 0;
+}
+
+function isDarkMode() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var isDarkMode = urlParams.get("darkmode");
+    return isDarkMode;
 }
 
 function renderDevicesToFloorplan(currentFloorHtml) {

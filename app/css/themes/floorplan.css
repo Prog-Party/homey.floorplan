@@ -104,7 +104,7 @@ body .row {
     max-height: 100%;
   }
 
-  #floorplan_View .single-device {
+  #floorplan_View .single-device:not([data-homey-class='sensor']) {
     cursor: pointer;
     display: relative;
   }
@@ -138,6 +138,8 @@ body .row {
     #floorplan_View .single-device.device-alarm-on {
       background-color: #f0b851;
     }
+
+ */
  /********************/
  /** CONFIG ***/
  /********************/
@@ -311,4 +313,10 @@ body .row {
 .w16 {
   width: 16px; 
   height: 16px;
+}
+
+/************ DarkMode *********/
+
+html[theme='dark-mode'] {
+  filter: invert(1) hue-rotate(180deg);
 }
