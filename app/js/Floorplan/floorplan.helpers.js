@@ -6,12 +6,8 @@ $(function() {
 
     initDataLoader();
     
-    let is_dark_mode = isDarkMode()
-    if(is_dark_mode) {
-        $("html").attr("theme", "dark-mode")
-    }
-    else if(!is_dark_mode || is_dark_mode == undefined) {
-        $("html").removeAttr("theme")
+    if(isDarkMode()) {
+        $("html").attr("theme", "dark-mode");
     }
     
     later.setInterval(function(){
@@ -46,6 +42,10 @@ function isDarkMode() {
     var urlParams = new URLSearchParams(window.location.search);
     var isDarkMode = urlParams.get("darkmode");
     return isDarkMode;
+}
+
+function constructUrl() {
+    return `${document.location.origin}/?theme=floorplan&token=${getToken()}`;
 }
 
 function renderDevicesToFloorplan(currentFloorHtml) {

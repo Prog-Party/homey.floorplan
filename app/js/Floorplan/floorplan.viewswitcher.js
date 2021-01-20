@@ -37,6 +37,14 @@ class Floorplan_Viewswitcher {
         document.dispatchEvent(this.onViewChangedEvent);
     }
 
+    toggleDarkMode() {
+        var url = constructUrl();
+        if(!isDarkMode()) {
+            url += "&darkmode=true";
+        }
+        window.location.href = url;
+    }
+
     get activeView() {
         return this.viewId;
     }

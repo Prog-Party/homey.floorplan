@@ -78,7 +78,15 @@ body .row {
   color: rgba(255,255,255,1);
 }
 
+html[theme='darkmode'] .navbar .navbar-configuration .navbar-configuration-darkmode:after {
+  content: '💡';
+  opacity: 1;
+}
 
+.navbar .navbar-configuration .navbar-configuration-darkmode:after {
+  content: '💡';
+  opacity: 0.2;
+}
 
  /********************/
  /** FLOORPLAN ***/
@@ -317,6 +325,7 @@ body .row {
 
 /************ DarkMode *********/
 
-html[theme='dark-mode'] {
+html[theme='dark-mode'],
+html[theme='dark-mode'] .no-dark-mode {
   filter: invert(1) hue-rotate(180deg);
 }

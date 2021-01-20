@@ -65,7 +65,7 @@
         <div style=margin-top:20px;>
           Your token can be acquired by the following steps:
           <ol>
-            <li>Visit <a href="https://homey.ink" target=_blank>https://homey.ink</a></li>
+            <li>Visit <a href="https://homey.ink" target="_blank">https://homey.ink</a></li>
             <li>Click on 'Login' to Log in with your Athom account.</li>
             <li>Open the browsers developer tools with F12</li> 
             <li>Click open the 'Console' tab</li>
@@ -75,8 +75,8 @@
         </div>
         <div>
           https://homeyfloorplan.azurewebsites.net/?theme=floorplan&token=
-          <input type='text' id='TokenField' placeholder='your token'/>
-          <a href="javascript:window.location.href='http://homeyflooprlan.azurewebsites.nl?token=' + $('#TokenField').val();" class="btn btn-primary">Visit your floorplan</a>
+          <input type='text' id='TokenField' placeholder='Enter your token...'/>
+          <a href="javascript:window.location.href='https://homeyfloorplan.azurewebsites.net/?theme=floorplan&token=' + $('#TokenField').val();" class="btn btn-primary">Visit your floorplan</a>
         </div>
       </div>
     </script>
@@ -160,9 +160,14 @@
         
         <div id="floorplan_FloorSwitcherMenu"></div>
   
-        <button class="navbar-configuration" type="button" onclick="_viewswitcher.switchToView('config_View')" title="Configuration">
-          <span class="navbar-configuration-icon">&#x2699;</span>
-        </button>
+        <div class="navbar-right">
+          <button class="navbar-configuration" type="button" onclick="_viewswitcher.switchToView('config_View')" title="Configuration">
+            <span class="navbar-configuration-icon">&#x2699;</span>
+          </button>
+          <button class="navbar-configuration" type="button" onclick="_viewswitcher.toggleDarkMode()" title="Toggle dark mode">
+            <span class="navbar-configuration-darkmode"></span>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -181,7 +186,7 @@
           <h2>Thank you</h2>
           <p>We really appreciate that you are using the Homey Floorplan. Why? Because we have created this for ourselves and are really happy that we can make you happy.</p>
           <p>To show you our happiness, here you see a picture of us creating this awesome interface on one of our famous ProgParty's:</p>
-          <p><img src="http://deresen.nl/ProgParty/foto_jens_dennis8.jpeg" style="width: 400px;" alt="Jens & Dennis" title="Jens & Dennis" /></p>
+          <p><img src="http://deresen.nl/ProgParty/foto_jens_dennis8.jpeg" class="no-dark-mode" style="width: 400px;" alt="Jens & Dennis" title="Jens & Dennis" /></p>
         </div>
         <div class="col-6">
           <h2>Donate</h2>
