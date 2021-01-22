@@ -14,18 +14,19 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Node.JS 10.x
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2.1.4
         with:
-          node-version: "10.x"       
+          node-version: '14'
+      - run: npm ci # or yarn install
       - name: Install Node Dependencies
-        run: npm install -g eslint
+        run: npm install
         env:
           CI: TRUE
       #- name: Test Code Linting
       #  run: npm run lint
       - name: Save Code Linting Report JSON
         # npm script for ESLint
-        run: npm run eslint --output-file eslint_report.json --format json src
+        run: npm run eslint --output-file eslint_report.json --format json *
         # See https://eslint.org/docs/user-guide/command-line-interface#options
         #run: npm run lint:report
         # Continue to the next step even if this fails
