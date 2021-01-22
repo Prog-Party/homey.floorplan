@@ -21,8 +21,8 @@ jobs:
         run: npm install
         env:
           CI: TRUE
-      - name: Test Code Linting
-        run: npm run lint
+      #- name: Test Code Linting
+      #  run: npm run lint
       - name: Save Code Linting Report JSON
         # npm script for ESLint
         run: npm run eslint --output-file eslint_report.json --format json src
