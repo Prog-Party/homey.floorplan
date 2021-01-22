@@ -54,7 +54,7 @@ class Floorplan_Viewswitcher {
 
     showView(viewId) {
         const allViews = this.views
-        const view = allViews.filter(v => v.viewId == viewId)[0]
+        const view = allViews.filter(v => v.viewId === viewId)[0]
 
         // Show the current view
         $('#' + viewId).show()
@@ -63,7 +63,7 @@ class Floorplan_Viewswitcher {
         allViews.forEach(v => $('#' + v.buttonId).parent().hide())
 
         // show the buttons that belong to the current view
-        view.buttonsToShow.forEach(id => $('#' + allViews.filter(v => v.id == id)[0].buttonId).parent().show())
+        view.buttonsToShow.forEach(id => $('#' + allViews.filter(v => v.id === id)[0].buttonId).parent().show())
     }
 }
 

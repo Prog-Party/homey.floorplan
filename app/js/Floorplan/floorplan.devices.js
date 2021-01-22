@@ -143,7 +143,7 @@ class Floorplan_Devices {
     }
 
     getFloorplanDevice(homeyDevice) {
-        const device = this.allFloorplanDevices.filter(d => d.deviceId == homeyDevice.id)
+        const device = this.allFloorplanDevices.filter(d => d.deviceId === homeyDevice.id)
         return device.length > 0 ? device[0] : null
     }
 
@@ -152,12 +152,12 @@ class Floorplan_Devices {
     }
 
     getHomeyDeviceById(deviceId) {
-        const device = this.allHomeyDevices.filter(d => d.id == deviceId)
+        const device = this.allHomeyDevices.filter(d => d.id === deviceId)
         return device.length > 0 ? device[0] : null
     }
 
     activateHomeyDevice(homeyDeviceId) {
-        const device = _devices.allHomeyDevices.filter(d => d.id == homeyDeviceId)[0]
+        const device = _devices.allHomeyDevices.filter(d => d.id === homeyDeviceId)[0]
         this._activeHomeyDevice = device
         this._activeFloorplanDevice = this.getFloorplanDevice(device)
         document.dispatchEvent(this.onActivateDeviceEvent)

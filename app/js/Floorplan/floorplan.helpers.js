@@ -33,7 +33,7 @@ function getToken() {
 function hasToken() {
     const urlParams = new URLSearchParams(window.location.search)
     const token = urlParams.get('token')
-    return token.length != 0
+    return token.length !== 0
 }
 
 function isDarkMode() {
@@ -60,7 +60,7 @@ function renderDevicesToFloorplan(currentFloorHtml) {
 
     if (!_devices.allFloorplanDevices || !currentFloor || !_devices._devicesAreInitialized) { return }
 
-    _devices.allFloorplanDevices.filter(device => device.floorId == currentFloor.id).forEach(floorplanDevice => {
+    _devices.allFloorplanDevices.filter(device => device.floorId === currentFloor.id).forEach(floorplanDevice => {
         const homeyDevice = _devices.getHomeyDevice(floorplanDevice)
         if (homeyDevice == null) { return }
 
