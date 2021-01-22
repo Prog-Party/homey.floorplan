@@ -1,5 +1,7 @@
 # Homey.floorplan
 
+[![Dependency Status](https://david-dm.org/Prog-Party/homey.floorplan.svg)](https://david-dm.org/Prog-Party/homey.floorplan.svg)
+
 Homey.floorplan is an open-source project for wall-mounted Homey dashboards.
 Built by ProgParty!
 
