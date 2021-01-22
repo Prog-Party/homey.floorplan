@@ -18,7 +18,7 @@ jobs:
         with:
           node-version: "10.x"       
       - name: Install Node Dependencies
-        run: npm install eslint --save-dev
+        run: npm install eslint
         env:
           CI: TRUE
       #- name: Test Code Linting
