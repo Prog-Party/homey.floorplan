@@ -1,8 +1,8 @@
 {
-  "name": "homey-floorplan",
-  "description": "Show your devices on a wonderfull floorplan",
-  "version": "0.0.1",
-  "private": true,
-  "license": "MIT",
-  "author": "ProgParty B.V."
+    "name": "homey-floorplan",
+    "description": "Show your devices on a wonderful floorplan",
+    "version": "0.0.1",
+    "private": true,
+    "license": "MIT",
+    "author": "ProgParty B.V."
 }
