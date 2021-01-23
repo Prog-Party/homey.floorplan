@@ -13,7 +13,7 @@ document.addEventListener('onActivateFloor', function(e) {
     $('#configdevice_FloorSwitcherMenu').find('a').each((i, o) => {
         $(o).removeClass('active')
 
-        if ($(o).attr('data-floor-id') == _floors.activeFloor.id) {
+        if ($(o).attr('data-floor-id') === _floors.activeFloor.id) {
             $(o).addClass('active')
         }
     })
@@ -105,7 +105,7 @@ function configdevice_renderDeviceList() {
     })
 
     const selectedOrder = $('#configdevice_Order').val()
-    if (selectedOrder == 'name') { deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.name, y.homeyDevice.name)) } else if (selectedOrder == 'type') { deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.driverUri + x.homeyDevice.driverId, y.homeyDevice.driverUri + y.homeyDevice.driverId)) } else if (selectedOrder == 'isadded') { deviceObjectList.sort((x, y) => sortByNullable(x.floorplanDevice, y.floorplanDevice)) }
+    if (selectedOrder === 'name') { deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.name, y.homeyDevice.name)) } else if (selectedOrder == 'type') { deviceObjectList.sort((x, y) => sortByName(x.homeyDevice.driverUri + x.homeyDevice.driverId, y.homeyDevice.driverUri + y.homeyDevice.driverId)) } else if (selectedOrder == 'isadded') { deviceObjectList.sort((x, y) => sortByNullable(x.floorplanDevice, y.floorplanDevice)) }
 
     const deviceListHomey = $('#configdevice_DeviceListHomey')
     deviceListHomey.html('')
@@ -118,7 +118,7 @@ function configdevice_renderDeviceList() {
 function configdevice_renderDevices() {
     if (!_floors.floorsAreInitialized || !_devices.devicesAreInitialized) { return }
 
-    if (_floors.allFloors.length == 0) { return }
+    if (_floors.allFloors.length === 0) { return }
 
     console.log(`${getDateTime()} - configdevice: Render the devices to the screen.`)
     removeLoader('configdevice_UpdateDevice_Loader')

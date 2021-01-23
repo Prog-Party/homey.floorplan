@@ -25,7 +25,7 @@ class Helpers_Homey {
 
     setTemperature(device) {
         const capabilityName = 'measure_temperature'
-        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != 'sensor') { return }
+        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class !== 'sensor') { return }
 
         const capability = device.capabilitiesObj[capabilityName]
         device.temperature = capability.value
@@ -34,7 +34,7 @@ class Helpers_Homey {
 
     setHumidity(device) {
         const capabilityName = 'measure_humidity'
-        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != 'sensor') { return }
+        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class !== 'sensor') { return }
 
         const capability = device.capabilitiesObj[capabilityName]
         device.humidity = capability.value
@@ -43,7 +43,7 @@ class Helpers_Homey {
 
     setAlarmIsOn(device) {
         const capabilityName = 'alarm_motion'
-        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != 'sensor') { return }
+        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class !== 'sensor') { return }
 
         const capability = device.capabilitiesObj[capabilityName]
         device.alarmIsOn = capability.value
@@ -51,7 +51,7 @@ class Helpers_Homey {
 
     setAlarmOpenClose(device) {
         const capabilityName = 'alarm_contact'
-        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class != 'sensor') { return }
+        if (!device.capabilitiesObj || !device.capabilitiesObj[capabilityName] || device.class !== 'sensor') { return }
 
         const capability = device.capabilitiesObj[capabilityName]
         device.alarmOpenCloseIsOn = capability.value
@@ -61,7 +61,7 @@ class Helpers_Homey {
         if (!device || !device.ui || !device.ui.quickAction) { return }
 
         device.makeCapabilityInstance(device.ui.quickAction, function(value) {
-            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) is turned ${value == true ? 'on' : 'off'}`)
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) is turned ${value === true ? 'on' : 'off'}`)
             const singleDevice = $(`div.single-device[data-device-id='${device.id}']`)
             device.isOn = value
             if (value) { singleDevice.addClass('device-on') } else { singleDevice.removeClass('device-on') }
@@ -97,7 +97,7 @@ class Helpers_Homey {
         if (!device || device.alarmIsOn === undefined) { return }
 
         device.makeCapabilityInstance(capabilityName, function(value) {
-            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) alarm is turned ${value == true ? 'on' : 'off'}`)
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) alarm is turned ${value === true ? 'on' : 'off'}`)
             const singleDevice = $(`div.single-device[data-device-id='${device.id}']`)
             device.alarmIsOn = value
             if (value) { singleDevice.addClass('device-alarm-on') } else { singleDevice.removeClass('device-alarm-on') }
@@ -109,7 +109,7 @@ class Helpers_Homey {
         if (!device || device.alarmOpenCloseIsOn === undefined) { return }
 
         device.makeCapabilityInstance(capabilityName, function(value) {
-            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) open close alarm is turned ${value == true ? 'on' : 'off'}`)
+            console.log(`${getDateTime()} - Device ${device.name} (${device.id}) open close alarm is turned ${value === true ? 'on' : 'off'}`)
             const singleDevice = $(`div.single-device[data-device-id='${device.id}']`)
             device.alarmOpenCloseIsOn = value
             if (value) { singleDevice.addClass('device-alarm-on') } else { singleDevice.removeClass('device-alarm-on') }

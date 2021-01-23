@@ -70,7 +70,7 @@ class Floorplan_Devices {
         const device = this.getHomeyDeviceById(deviceId)
 
         if (!device || !device.ui || !device.ui.quickAction) {
-            console.log(`You tried to turn ${value == true ? 'on' : 'off'}, but this is not possible for the device ${device.name} (${device.id}).`)
+            console.log(`You tried to turn ${value === true ? 'on' : 'off'}, but this is not possible for the device ${device.name} (${device.id}).`)
             return
         }
 

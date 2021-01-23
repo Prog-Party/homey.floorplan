@@ -36,7 +36,7 @@ document.addEventListener('onFloorsRetrieved', function(e) {
 
     $('#floorplan_CarouselHolder .carousel').carousel({ interval: 0 })
 
-    if (_floors.allFloors.length == 0) {
+    if (_floors.allFloors.length === 0) {
         $('#floorplan_View').html("<div class='alert alert-warning' style='margin-left:25%;margin-right:25%'>Please note: configure the floors. <a href='javascript:_viewswitcher.switchToView(\"configfloor_View\")'>Click here to configure the floors.</a></div>")
     }
 
@@ -46,7 +46,7 @@ document.addEventListener('onFloorsRetrieved', function(e) {
 function floorplan_renderDevices() {
     if (!_floors.floorsAreInitialized || !_devices.devicesAreInitialized) { return }
 
-    if (_floors.allFloors.length == 0) { return }
+    if (_floors.allFloors.length === 0) { return }
 
     if (!_floors._activeFloor) { return }
 
