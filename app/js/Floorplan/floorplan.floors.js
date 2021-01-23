@@ -44,7 +44,7 @@ class Floorplan_Floors {
     }
 
     activateFloor(floorId) {
-        const floor = _floors.allFloors.filter(f => f.id == floorId)[0]
+        const floor = _floors.allFloors.filter(f => f.id === floorId)[0]
         this._activeFloor = floor
         document.dispatchEvent(this.onActivateFloorEvent)
     }
